@@ -1,0 +1,1098 @@
+
+{%load static%}
+
+<doctype html>
+    <head>
+    <title>expert</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+            #dashboard{
+    position: absolute;
+    width: 235px;
+    height: 98px;
+    left: 0px;
+    top: 0px;
+    background: #3C59F0;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    #dashboard img{
+    position: absolute;
+    width: 84px;
+    height: 90px;
+    left: 151px;
+    top: 9px;
+    }
+    #header{
+    box-sizing: border-box;
+    
+    position: absolute;
+    width: 1284px;
+    height: 99px;
+    left: 235px;
+    top: 0px;
+    
+    background: #3C59F0;
+    border: 1px solid #000000;
+    }
+    #nav{
+    position: absolute;
+    width: 237px;
+    height: 925px;
+    left: -2px;
+    top: 99px;
+    overflow-y: hidden;
+    background: #3C59F0;
+    box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    #section{
+    position: absolute;
+    width: 1284px;
+    height: 923px;
+    left: 235px;
+    overflow-y: scroll;
+    top: 99px;
+    background: #D9D9D9;
+    }
+    #s1{
+        position:relative;
+        overflow-x: scroll;
+        background: #D9D9D9;
+        width: 1284px;
+    
+    }
+    #s2{
+        position:relative;
+        overflow-x: scroll;
+        background: #C1BFBF;
+        width: 1284px;
+    
+    }
+    #s3{
+        position:relative;
+        overflow-x: scroll;
+        background: #D9D9D9;
+        width: 1284px;
+    
+    }
+    
+    
+    #t1,#t2,#t3{
+        position: relative;
+    }
+    #n1 {
+    position: absolute;
+    left: 26px;
+    top: 30px;
+    
+    
+    }
+    #n2{
+    position: absolute;
+    left: 20px;
+    top: 113px;
+    }
+    #n3{
+    position: absolute;
+    left: 11px;
+    top: 202px;
+    }
+    #n4{
+    position: absolute;
+    left: 16px;
+    top: 297px;
+    }
+    #a11{
+    position: absolute;
+    width: 139px;
+    height: 56px;
+    left: 50px;
+    top: 40px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    
+    color: #100F0F;
+    }
+    #a22{
+    position: absolute;
+    width: 108px;
+    height: 56px;
+    left: 200px;
+    top: 40px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    
+    color: #FFADAD;
+    }
+    #a33{
+    position: absolute;
+    width: 340px;
+    height: 42px;
+    left: 900px;
+    top: 45px;
+    
+    font-family: 'Inria Serif';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    
+    color: #FFFFFF;
+    }
+    
+    #a55{
+    position: absolute;
+    width: 91px;
+    height: 53px;
+    left: 1050px;
+    top: 1px;
+    }
+    
+    
+    #header img{
+    position: absolute;
+    width: 59px;
+    height: 48px;
+    left: 154px;
+    top: 30px;
+    }
+    #n1 a{
+    position: relative;
+    top: -6;
+    left: 17px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    
+    color: #292020;
+    }
+    #n2 a{
+    position: relative;
+    top: -12px;
+    left: 25px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    
+    color: #292020;
+    }
+    #n3 a{
+    position: relative;
+    top:-9 ;
+    left: 17px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    
+    color: #292020;
+    }
+    #n4 a{
+    position: relative;
+    top: -10;
+    left: 20px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    
+    color: #292020;
+    }
+    #d1{
+    position: absolute;
+    width: 68px;
+    height: 57px;
+    left: 1140px;
+    top: 21px;
+    
+    background: #41242F;
+    border-radius: 8px;
+    }
+    #a44 span{
+    position: relative;
+    width: 104px;
+    height: 52px;
+    top: 5px;
+    left: 20px;
+    
+    font-family: 'Inria Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+    
+    color: #FFFBFB;
+    
+    
+    }
+    #b{
+    
+            position: relative;
+            width: 437px;
+            height: 264px;
+            left: 150px;
+            top: 100px;
+            background: #E7E7E7;
+         }
+         .accept1
+         {
+            position: absolute;
+            bottom: -10px;
+    
+         }
+         #u
+    
+         {
+            position: absolute;
+            bottom: -10px;
+    
+         } #p
+         {
+            position: absolute;
+            bottom: -10px;
+            right: -7px;
+    
+         }
+         
+        } #p1
+         {
+            position: absolute;
+           
+            right: -120%;
+    
+         }
+    #f
+    { position: absolute;
+     
+    left:35%;
+    top:10%;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    
+    color: #000000;
+    }
+    #d
+    {
+    position: absolute;
+    left:35%;
+    top:35%;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    
+    color: #000000;
+    }
+    a{
+        cursor: pointer;
+    }
+    /*popup*/
+    #box{    
+    box-sizing: border-box;
+    display:none;
+    outline:0;
+    width: 735px;
+    height: 1005px;
+    left: 0px;
+    top: 0px;
+    background-color: antiquewhite;
+    
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 34px;
+    }
+    #name{
+            
+    box-sizing: border-box;
+    
+    position: absolute;
+    width: 431.59px;
+    height: 41.22px;
+    left: 135.21px;
+    top: 133.61px;
+    
+    background: #D9D9D9;
+    
+    border-radius: 23px;
+        }
+    #email{
+       box-sizing: border-box;
+    
+    position: absolute;
+    width: 431.59px;
+    height: 41.22px;
+    left: 135.21px;
+    top: 233.71px;
+    background: #D9D9D9;
+    border-radius: 23px;  
+        }
+    #no{
+         box-sizing: border-box;
+    
+    position: absolute;
+    width: 431.59px;
+    height: 41.22px;
+    left: 135px;
+    top: 374.5px;
+    
+    background: #D9D9D9;
+    border-radius: 23px;   
+        }
+    #profession{
+            
+    box-sizing: border-box;
+    
+    position: absolute;
+    width: 431.59px;
+    height: 41.22px;
+    left: 133px;
+    top: 507.5px;
+    
+    background: #D9D9D9;
+    border: 1px solid #000000;
+    border-radius: 23px;
+        }
+    #skill{
+            box-sizing: border-box;
+    
+    position: absolute;
+    width: 431.59px;
+    height: 41.22px;
+    left: 133px;
+    top: 637.5px;
+    
+    background: #D9D9D9;
+    border: 1px solid #000000;
+    border-radius: 23px;
+        }
+    #address{
+            box-sizing: border-box;
+    
+    position: absolute;
+    width: 431.59px;
+    height: 80.48px;
+    left: 135px;
+    top: 763.5px;
+    
+    background: #D9D9D9;
+    border: 1px solid #000000;
+    border-radius: 23px;
+            
+        }
+    #update{
+            position: absolute;
+    width: 261px;
+    height: 66px;
+    left: 237px;
+    top: 888px;
+    
+            
+        }
+        #profile{
+            position: absolute;
+    width: 437px;
+    height: 60px;
+    left: 255px;
+    top: 30px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    
+    color: #100F0F;
+    
+    
+    
+            
+        }
+        #n{
+            position: absolute;
+    width: 91.12px;
+    height: 38.28px;
+    left: 135.21px;
+    top: 90.42px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+    
+    
+    color: #121010;
+    
+    
+    
+            
+        }
+        #e{
+            position: absolute;
+    width: 85.12px;
+    height: 22.57px;
+    left: 135.21px;
+    top: 189.55px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    
+    color: #201B1B;
+    
+    
+            
+        }
+        #pn{
+            position: absolute;
+    width: 158.22px;
+    height: 38.28px;
+    left: 135px;
+    top: 305.5px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    
+    
+    
+    color: #201B1B;
+            
+        }
+        #pr{
+            position: absolute;
+    width: 168.23px;
+    height: 38.28px;
+    left: 135px;
+    top: 442.5px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    /* identical to box height */
+    
+    
+    color: #201B1B;
+    
+    
+    
+            
+        }
+        #sk{
+            position: absolute;
+    width: 84.11px;
+    height: 22.57px;
+    left: 135px;
+    top: 579.5px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    
+    color: #201B1B;
+    
+    
+            
+        }
+        #add{
+            position: absolute;
+    width: 187.25px;
+    height: 22.57px;
+    left: 130px;
+    top: 705.5px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    
+    color: #201B1B;
+    
+    
+    
+            
+        }
+        #btn{
+            position: absolute;
+    width: 261px;
+    height: 66px;
+    left: 237px;
+    top: 888px;
+            font-weight: 700;
+    font-size: 32px;
+            
+        }
+        #btn1{
+            position: absolute;
+    width: 261px;
+    height: 66px;
+    left: 1114px;
+    top: 546px;
+    
+    background: #3C59F0;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 32px;
+    position: absolute;
+    width: 165.69px;
+    height: 29.31px;
+    left: 1155.79px;
+    top: 571.38px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    
+    color: #FFFFFF;
+    
+            
+        }
+    #t1{
+        display: none;
+    }
+    #t2{
+        display: none;
+    }
+    #t3{
+        display: none;
+    }
+    #t4{
+        display: none;
+    }
+    #accept{
+    position: absolute;
+    width: 435.5px;
+    height: 70.07px;
+    bottom: 0px;
+    left: 0px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    
+    background: #2164C9;
+    }
+    #accept1{
+    position: absolute;
+    left: 180px;
+    top: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    }
+    #c,#pr{
+    position: absolute;
+    width: 31.42px;
+    height: 42px;
+    left: 0px;
+    
+    background: #2164C9;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    
+    }
+    #c1,#pr1{
+    position: absolute;
+    left: 8px;
+    top: 10px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    
+    color: #FFFFFF;
+    
+    }
+    #progress,#download{
+    position: absolute;
+    width: 218px;
+    height: 57px;
+    bottom: 0px;
+    right: 0px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    
+    background: #2164C9;
+    }
+    #close,#view{
+    position: absolute;
+    width: 218px;
+    height: 57px;
+    bottom: 0px;
+    left: 0px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    
+    background: #2164C9;
+    }
+    
+    
+    #close1,#progress1,#view1{
+    position: absolute;
+    left: 50px;
+    top: 15px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    
+    color: #FFFFFF;
+    }
+    #download1{
+    position: absolute;
+    left: 70px;
+    top: 5px;
+    }
+    #downm{
+        position: absolute;
+        right: 123px;
+        top: -3px;
+    }
+    #d{
+        left:140px;
+    }
+    #ddd{
+        position: absolute;
+        top:-10px;
+        left:30px;
+     }
+    </style>
+    </head>
+    
+    <body onload="click();">
+    
+    <div id="box" tabindex="-1">
+    
+    <form action="clientreg.php" method='post' id="myform" >
+    <label id="profile">PROFILE</label>
+    <label id="n">NAME</label><br>    
+    <input type="text" id="name" name="name" >
+    <label id="e">Email</label><br> 
+    <input type="email" id="email" name="email" >
+    <label id="pn">Phone-No</label><br> 
+    <input type="number" id="no" name="number" >
+    <label id="pr">Profession</label><br>
+    <input type="text" id="profession" name="profession">
+    <label id="sk">Skills</label><br>
+    <input type="text" id="skill" name="skill">
+    <label id="add">Address</label><br>
+    <input type="textarea" id="address" name="address">
+    <input type="submit" name="update" value="UPDATE"  id="btn">
+    </form>
+    
+    </div>
+    <div id="dashboard">
+    <img src="{% static '/images/List.svg'%}">	
+    </div>	
+    <div id="header">
+    <a id=a11><b>Dashboard</b></a><br>
+    <img src="{% static '/images/arrow.svg'%}">
+    <a id=a22><b>Review</b></a><br>
+    <div id=a33>Welcome user</div><br>
+    <a id=a44><div id=d1><span>N</span></div></a><br>
+    <a id=a55><img src="{% static '/images/Logout.svg'%}"></a><br>
+    </div>
+    <div id="nav">
+    <div id=n1>
+    <img src="{% static '/images/vector.svg'%}" id='home' ><a id=a1><b>Home</b></a>
+    </div>
+    <div id=n2>
+    <img src="{% static '/images/Maintenance.svg'%}" id='mywork'><a id=a2><b>My Works</b></a>
+    </div>
+    <div id=n3>
+    <img src="{% static '/images/View.svg'%}" id='review'><a id=a3><b>Review</b></a>
+    </div>
+    <div id=n4>
+    <img src="{% static '/images/Audit.svg'%}" id='completed'><a id=a4><b>Completed</b></a>
+    </div>
+    </div>
+    <div id="section">
+    
+    <div id="t1">
+        <h2>LATEST WORKS</h2>
+    <table   style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
+    
+    
+    {%for getdata in Clients %}
+    <tr>
+    <td>
+    <div id="b" onclick="alert('div');">
+    <a href="" onclick="accept({{getdata.age}})" id="u"><div id="accept"><div id="accept1">ACCEPT</div></div></a>
+    <a href="" onclick="func2(event)" id="p1"><div id="c"><div id="c1">C</div></div></a>
+    
+    <sec  id="f">{{getdata.age}}</sec>
+    <p id="d">{{getdata.cl_name}}</p><br>
+    <p id="ddd">{{getdata.cl.address}}</p>
+    </div>
+    </td>
+    
+    <td>
+    <div id="b"  onclick="alert('div');">
+    <a href="" onclick="accept({{getdata.age}})" id="u"><div id="accept"><div id="accept1">ACCEPT</div></div></a>
+    <a href="" onclick="func2(event)" id="p1"><div id="c"><div id="c1">C</div></div></a>
+    <sec  id="f">hloo</sec>
+    <p id="d">{{getdata.cl_name}}</p><br>
+    <p id="ddd">{{getdata.cl_name}}</p>
+    </div>
+    </td>
+    </tr>
+
+
+    {% endfor %}
+    
+        
+        
+    </table>
+    </div>
+    
+    
+    <div id="t2">
+    <h2>MY TASKS</h2>
+    <table  style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
+    <tr>
+    <td>
+    <div id="b" onclick="func4(event)">
+    <a href="" onclick="func4(event)" id="clos"><div id="close"><div id="close1">CLOSE</div></div></a>
+    <a href="" onclick="func5(event)" id="proj"><div id="c"><div id="c1">C</div></div></a>
+    <a href="" onclick="func6(event)" id="prog"><div id="progress"><div id="progress1">PROGRESS</div></div></a>
+    
+    <sec  id="f">hlloo</sec>
+    <p id="d">hlloo</p><br>
+    <p id="ddd">hloo</p>
+    </div>
+    </td>
+    
+    <td>
+    <div id="b"  onclick="func4(event)">
+    <a href="" onclick="func4(event)" id="clos"><div id="close"><div id="close1">CLOSE</div></div></a>
+    <a href="" onclick="func5(event)" id="proj"><div id="c"><div id="c1">C</div></div></a>
+    <a href="" onclick="func6(event)" id="prog"><div id="progress"><div id="progress1">PROGRESS</div></div></a>
+    <sec  id="f">hlooo</sec>
+    <p id="d">hlloo</p><br>
+    <p id="ddd">hlloo</p>
+    </div>
+    </td>
+    </tr>
+   
+    </table>
+    </div>
+    
+    
+    
+    <div id="t3" >
+    <h2>WORKS UNDER REVIEW</h2>
+    <table   style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
+    <tr>
+    <td>
+    <div id="b" onclick="alert('div');">
+    <a href="" onclick="func7(event)" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
+    <a href="" onclick="func8(event)" id="clie"><div id="c"><div id="c1">C</div></div></a>
+    <a href="" onclick="func9(event)" id="down"><div id="download"><img src="Download.svg" id="download1"></div></a>
+    
+    <sec  id="f">hlloo</sec>
+    <p id="d">hiii</p><br>
+    <p id="ddd">how are you</p>
+    </div>
+    </td>
+    
+    <td>
+    <div id="b"  onclick="alert('div');">
+    <a href="" onclick="func7(event)" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
+    <a href="" onclick="func8(event)" id="clie"><div id="c"><div id="c1">C</div></div></a>
+    <a href="" onclick="func9(event)" id="down"><div id="download"><img src="Download.svg" id="download1"></div></a>
+    <sec  id="f">hlloo</sec>
+    <p id="d">hiii</p><br>
+    <p id="ddd">how are you</p>
+    </div>
+    </td>
+    </tr>
+       
+    </table>
+    </div>
+    
+    
+    
+    <div id="t4">
+    <H2>COMPLETED WORKS</H2>
+    <table   style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
+    
+     
+    <tr>
+    <td>
+    <div id="b" onclick="alert('div');">
+    <a href="" onclick="func7(event)" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
+    <a href="" onclick="func8(event)" id="clie"><div id="c"><div id="c1">C</div></div></a>
+    <a href="" onclick="func9(event)" id="down"><div id="download"><img src="Download.svg" id="download1"></div></a>
+    <sec  id="f">hllooo</sec>
+    <p id="d">hiii</p><br>
+    <p id="ddd">how are you</p>
+    </div>
+    </td>
+    <td>
+    <div id="b"  onclick="alert('div');">
+    <a href="" onclick="func7(event)" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
+    <a href="" onclick="func8(event)" id="clie"><div id="c"><div id="c1">C</div></div></a>
+    <a href="" onclick="func9(event)" id="down"><div id="download"><img src="Download.svg" id="download1"></div></a>
+    <sec  id="f">hlloo</sec>
+    <p id="d">hii</p><br>
+    <p id="ddd">how are you</p>
+    </div>
+    </td>
+    </tr>
+    
+    </table>
+    </div>
+    
+    </div>
+    <script>
+    
+    
+    
+        
+    /*module*/
+    function func4(event) {
+                 event.stopPropagation();
+                 document.getElementById("section").innerHTML=`<div id="s1">
+    <h2>LATEST WORKS</h2>
+    <table   style="position: relative;left: -100px;top: -100px;border-spacing:60px;">
+    
+    <td>
+    <div id="b" onclick="alert('div');">
+    <a href="" onclick="func4(event)" id="progressm"><div id="close"><div id="close1">80%</div></div></a>
+    <a href="" onclick="func5(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>
+    <a href="" onclick="func6(event)" id="edit"><div id="progress"><div id="progress1">EDIT</div></div></a>
+    <sec  id="f">MODULE</sec>
+    <p id="d">Description</p>
+    </div>
+    </td>
+    
+    
+    </table>
+    </div>
+    
+    
+    <div id="s2">
+    <h2>MY TASKS</h2>
+    <table  style="position: relative;left: -100px;top: -100px;border-spacing:60px;">
+    
+    <td>
+    <div id="b" onclick="alert('div');">
+    <a href="" onclick="func4(event)" id="suggestion"><div id="close"><div id="close1">SUGGESTION</div></div></a>
+    <a href="" onclick="func5(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>
+    <a href="" onclick="func9(event)" id="downm"><img src="Download.svg" id="download1"></a>
+    <a href="" onclick="func6(event)" id="edit"><div id="progress"><div id="progress1">ACCEPT</div></div></a>
+    <sec  id="f">MODULE</sec>
+    <p id="d">Description</p>
+    </div>
+    
+    
+    </table>
+    </div>
+    
+    <div id="s3" >
+    <h2>WORKS UNDER REVIEW</h2>
+    <table   style="position: relative;left: -100px;top: -100px;border-spacing:60px;">
+    
+    <td>
+    <div id="b" onclick="alert('div');">
+    <a href="" onclick="func1(event)" id="reopen"><div id="accept"><div id="accept1">REOPEN</div></div></a>
+    <a href="" onclick="func9(event)" id="downm"><img src="Download.svg" id="download1"></a>
+    <a href="" onclick="func2(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>
+    <sec  id="f">MODULE</sec>
+    <p id="d">Description</p>
+    </div>
+    
+    </table>`;
+            alert("upload");
+              
+            }
+            function func2(event) {
+                 event.stopPropagation();                             
+                 alert("progress");
+                 
+            }
+            function accept(a) {
+
+                event.stopPropagation();
+              
+               $.ajax({
+                url: '/edit_profile/',
+                type: 'GET',// This is the default though, you don't actually need to always mention it
+                data:{
+                    'id':a
+                },
+                success: function(response) {
+                    
+                    var instance = JSON.parse(response["foo"]);
+                    alert(instance);
+                
+                },
+                failure: function(response) { 
+                    alert('Got an error dude');
+                }
+            });
+                
+                 
+                 
+               
+              
+            }
+            function func3(event) {
+                 event.stopPropagation();
+             
+                 alert("project details");
+              
+            }
+    /*popup*/
+    
+    
+    /*layout*/
+    function click()
+    {
+    
+    document.getElementById("a22").innerHTML="Home";   
+    document.getElementById("home").style.filter="invert(100%)";
+    document.getElementById("mywork").style.filter="invert(0%)";
+    document.getElementById("review").style.filter="invert(100%)";
+    document.getElementById("completed").style.filter="invert(0%)";
+    
+    document.getElementById("t1").style.display= "block";
+    document.getElementById("a1").style.color= "white";
+    document.getElementById("a2").style.color= "black";
+    document.getElementById("a3").style.color= "black";
+    document.getElementById("a4").style.color= "black";
+    document.getElementById("t2").style.display= "none";
+    document.getElementById("t3").style.display= "none";
+    document.getElementById("t4").style.display= "none";
+    }
+    document.getElementById("a1").addEventListener("click",click);
+    
+    function click1()
+    {
+    document.getElementById("a22").innerHTML="My works";    
+    document.getElementById("mywork").style.filter="invert(100%)";
+    document.getElementById("home").style.filter="invert(0%)";
+    document.getElementById("review").style.filter="invert(100%)";
+    document.getElementById("completed").style.filter="invert(0%)";
+    document.getElementById("a2").style.color= "white";
+    document.getElementById("a1").style.color= "black";
+    document.getElementById("a3").style.color= "black";
+    document.getElementById("a4").style.color= "black";
+    document.getElementById("t1").style.display= "none";
+    document.getElementById("t2").style.display= "block";
+    document.getElementById("t3").style.display= "none";
+    document.getElementById("t4").style.display= "none";
+    }
+    document.getElementById("a2").addEventListener("click",click1);
+    
+    function click2()
+    {
+    document.getElementById("a22").innerHTML="Review";     
+    document.getElementById("home").style.filter="invert(0%)";
+    document.getElementById("mywork").style.filter="invert(0%)";
+    document.getElementById("review").style.filter="invert(0%)";
+    document.getElementById("completed").style.filter="invert(0%)";
+    document.getElementById("a3").style.color= "white";
+    document.getElementById("a2").style.color= "black";
+    document.getElementById("a1").style.color= "black";
+    document.getElementById("a4").style.color= "black";
+    document.getElementById("t1").style.display= "none";
+    document.getElementById("t2").style.display= "none";
+    document.getElementById("t3").style.display= "block";
+    document.getElementById("t4").style.display= "none";
+    }
+    document.getElementById("a3").addEventListener("click",click2);
+    function click3()
+    {
+    document.getElementById("a22").innerHTML="Completed";     
+    document.getElementById("home").style.filter="invert(0%)";
+    document.getElementById("mywork").style.filter="invert(0%)";
+    document.getElementById("review").style.filter="invert(100%)";
+    document.getElementById("completed").style.filter="invert(100%)";
+    document.getElementById("a4").style.color= "white";
+    document.getElementById("a2").style.color= "black";
+    document.getElementById("a3").style.color= "black";
+    document.getElementById("a1").style.color= "black";
+    document.getElementById("t1").style.display= "none";
+    document.getElementById("t2").style.display= "none";
+    document.getElementById("t3").style.display= "none";
+    document.getElementById("t4").style.display= "block";
+    }
+    document.getElementById("a4").addEventListener("click",click3);
+    function click4()
+    {
+    document.getElementById('section').innerHTML = 'violet';
+    }
+    document.getElementById("a11").addEventListener("click",click4);
+    function click5()
+    {
+    document.getElementById('section').innerHTML = 'black';
+    }
+    document.getElementById("a22").addEventListener("click",click5);
+    
+    
+    function click6()
+    {
+    document.getElementById('section').innerHTML = 'puple';
+    }
+    document.getElementById("a33").addEventListener("click",click6);
+    function click7()
+    {
+    document.getElementById('section').innerHTML = 'pink';
+    }
+    document.getElementById("a44").addEventListener("click",click7);
+    function click8()
+    {
+    document.getElementById('section').innerHTML = 'lavender';
+    
+    }
+    
+    </script>
+    </body>
+    </html>
