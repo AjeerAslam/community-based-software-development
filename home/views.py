@@ -17,7 +17,7 @@ def edit_profile(request):
     if request.method == 'GET':
         id= request.GET.get('id')
         return JsonResponse({"foo": id})
-        print(9)
+        print(hello)
     
 
     
