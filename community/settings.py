@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'community.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'community',
+        'NAME': 'comm',
         'USER':'root',
         'PASSWORD':'',
         'HOST':'localhost',

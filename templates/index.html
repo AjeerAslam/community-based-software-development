@@ -759,26 +759,26 @@
     <table   style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
     
     
-    {%for getdata in Clients %}
+    {%for getdata in Projects %}
     <tr>
     <td>
     <div id="b" onclick="alert('div');">
-    <a href="" onclick="accept({{getdata.age}})" id="u"><div id="accept"><div id="accept1">ACCEPT</div></div></a>
+    <a href="" onclick="accept({{getdata.pr_id}})" id="u"><div id="accept"><div id="accept1">ACCEPT</div></div></a>
     <a href="" onclick="func2(event)" id="p1"><div id="c"><div id="c1">C</div></div></a>
     
-    <sec  id="f">{{getdata.age}}</sec>
-    <p id="d">{{getdata.cl_name}}</p><br>
-    <p id="ddd">{{getdata.cl.address}}</p>
+    <sec  id="f">{{getdata.pr_name}}</sec>
+    <p id="d">{{getdata.pr_description}}</p><br>
+    <p id="ddd">{{getdata.pr_id}}</p>
     </div>
     </td>
     
     <td>
     <div id="b"  onclick="alert('div');">
-    <a href="" onclick="accept({{getdata.age}})" id="u"><div id="accept"><div id="accept1">ACCEPT</div></div></a>
+    <a href="" onclick="accept({{getdata.pr_id}})" id="u"><div id="accept"><div id="accept1">ACCEPT</div></div></a>
     <a href="" onclick="func2(event)" id="p1"><div id="c"><div id="c1">C</div></div></a>
     <sec  id="f">hloo</sec>
-    <p id="d">{{getdata.cl_name}}</p><br>
-    <p id="ddd">{{getdata.cl_name}}</p>
+    <p id="d">{{getdata.pr_id}}</p><br>
+    <p id="ddd">{{getdata.pr_id}}</p>
     </div>
     </td>
     </tr>
@@ -957,19 +957,19 @@
                  alert("progress");
                  
             }
-            function accept(a) {
+            function accept(pr_id) {
 
-                event.stopPropagation();
+                alert(pr_id);
               
                $.ajax({
-                url: '/edit_profile/',
+                url: '/accept/',
                 type: 'GET',// This is the default though, you don't actually need to always mention it
                 data:{
-                    'id':a
+                    'id':pr_id
                 },
                 success: function(response) {
                     
-                    var instance = JSON.parse(response["foo"]);
+                    var instance = JSON.parse(response["rs"]);
                     alert(instance);
                 
                 },
@@ -977,6 +977,8 @@
                     alert('Got an error dude');
                 }
             });
+            event.stopPropagation();
+            event.preventDefault();
                 
                  
                  
@@ -1084,7 +1086,9 @@
     document.getElementById("a33").addEventListener("click",click6);
     function click7()
     {
-    document.getElementById('section').innerHTML = 'pink';
+    alert(6);
+    event.preventDefault();
+
     }
     document.getElementById("a44").addEventListener("click",click7);
     function click8()
