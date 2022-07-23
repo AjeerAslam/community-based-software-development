@@ -755,11 +755,12 @@
     <div id="section">
     
     <div id="t1">
-        <h2>LATEST WORKS</h2>
+    <h2>LATEST WORKS</h2>
     <table   style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
     
     
     {%for getdata in Projects %}
+    
     <tr>
     <td>
     <div id="b" onclick="alert('div');">
@@ -768,9 +769,10 @@
     
     <sec  id="f">{{getdata.pr_name}}</sec>
     <p id="d">{{getdata.pr_description}}</p><br>
-    <p id="ddd">{{getdata.pr_id}}</p>
+    <p id="ddd">{{getdata.pr_date}}</p>
     </div>
     </td>
+    <!--
     
     <td>
     <div id="b"  onclick="alert('div');">
@@ -778,10 +780,11 @@
     <a href="" onclick="func2(event)" id="p1"><div id="c"><div id="c1">C</div></div></a>
     <sec  id="f">hloo</sec>
     <p id="d">{{getdata.pr_id}}</p><br>
-    <p id="ddd">{{getdata.pr_id}}</p>
+    <p id="ddd">{{getdata.pr_date}}</p>
     </div>
-    </td>
+    </td>-->
     </tr>
+
 
 
     {% endfor %}
@@ -795,6 +798,7 @@
     <div id="t2">
     <h2>MY TASKS</h2>
     <table  style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
+    {%for getdata in Projects_task %} 
     <tr>
     <td>
     <div id="b" onclick="func4(event)">
@@ -802,12 +806,12 @@
     <a href="" onclick="func5(event)" id="proj"><div id="c"><div id="c1">C</div></div></a>
     <a href="" onclick="func6(event)" id="prog"><div id="progress"><div id="progress1">PROGRESS</div></div></a>
     
-    <sec  id="f">hlloo</sec>
-    <p id="d">hlloo</p><br>
-    <p id="ddd">hloo</p>
+    <sec  id="f">{{getdata.pr_name}}</sec>
+    <p id="d">{{getdata.pr_description}}</p><br>
+    <p id="ddd">{{getdata.pr_due}}</p>
     </div>
     </td>
-    
+    <!--
     <td>
     <div id="b"  onclick="func4(event)">
     <a href="" onclick="func4(event)" id="clos"><div id="close"><div id="close1">CLOSE</div></div></a>
@@ -817,9 +821,9 @@
     <p id="d">hlloo</p><br>
     <p id="ddd">hlloo</p>
     </div>
-    </td>
+    </td> -->
     </tr>
-   
+    {% endfor %}
     </table>
     </div>
     
@@ -828,6 +832,7 @@
     <div id="t3" >
     <h2>WORKS UNDER REVIEW</h2>
     <table   style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
+    {%for getdata in Projects_review %}
     <tr>
     <td>
     <div id="b" onclick="alert('div');">
@@ -835,12 +840,12 @@
     <a href="" onclick="func8(event)" id="clie"><div id="c"><div id="c1">C</div></div></a>
     <a href="" onclick="func9(event)" id="down"><div id="download"><img src="Download.svg" id="download1"></div></a>
     
-    <sec  id="f">hlloo</sec>
-    <p id="d">hiii</p><br>
-    <p id="ddd">how are you</p>
+    <sec  id="f">{{getdata.pr_name}}</sec>
+    <p id="d">{{getdata.pr_description}}</p><br>
+    <p id="ddd">{{getdata.pr_due}}</p>
     </div>
     </td>
-    
+    <!--
     <td>
     <div id="b"  onclick="alert('div');">
     <a href="" onclick="func7(event)" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
@@ -851,8 +856,9 @@
     <p id="ddd">how are you</p>
     </div>
     </td>
+-->
     </tr>
-       
+    {% endfor %}  
     </table>
     </div>
     
@@ -861,7 +867,7 @@
     <div id="t4">
     <H2>COMPLETED WORKS</H2>
     <table   style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
-    
+    {%for getdata in Projects_completed %}
      
     <tr>
     <td>
@@ -869,11 +875,12 @@
     <a href="" onclick="func7(event)" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
     <a href="" onclick="func8(event)" id="clie"><div id="c"><div id="c1">C</div></div></a>
     <a href="" onclick="func9(event)" id="down"><div id="download"><img src="Download.svg" id="download1"></div></a>
-    <sec  id="f">hllooo</sec>
-    <p id="d">hiii</p><br>
-    <p id="ddd">how are you</p>
+    <sec  id="f">{{getdata.pr_name}}</sec>
+    <p id="d">{{getdata.pr_description}}</p><br>
+    <p id="ddd">{{getdata.pr_date}}</p>
     </div>
     </td>
+    <!--
     <td>
     <div id="b"  onclick="alert('div');">
     <a href="" onclick="func7(event)" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
@@ -884,8 +891,9 @@
     <p id="ddd">how are you</p>
     </div>
     </td>
+-->
     </tr>
-    
+    {% endfor %}
     </table>
     </div>
     
@@ -899,9 +907,9 @@
     function func4(event) {
                  event.stopPropagation();
                  document.getElementById("section").innerHTML=`<div id="s1">
-    <h2>LATEST WORKS</h2>
+    <h2>Modules</h2>
     <table   style="position: relative;left: -100px;top: -100px;border-spacing:60px;">
-    
+    {%for getdata in Modules_latest %}
     <td>
     <div id="b" onclick="alert('div');">
     <a href="" onclick="func4(event)" id="progressm"><div id="close"><div id="close1">80%</div></div></a>
@@ -911,16 +919,16 @@
     <p id="d">Description</p>
     </div>
     </td>
-    
+    {% endfor %}
     
     </table>
     </div>
     
     
     <div id="s2">
-    <h2>MY TASKS</h2>
+    <h2>Review</h2>
     <table  style="position: relative;left: -100px;top: -100px;border-spacing:60px;">
-    
+    {%for getdata in Modules_review %}
     <td>
     <div id="b" onclick="alert('div');">
     <a href="" onclick="func4(event)" id="suggestion"><div id="close"><div id="close1">SUGGESTION</div></div></a>
@@ -930,15 +938,15 @@
     <sec  id="f">MODULE</sec>
     <p id="d">Description</p>
     </div>
-    
+    {% endfor %}
     
     </table>
     </div>
     
     <div id="s3" >
-    <h2>WORKS UNDER REVIEW</h2>
+    <h2>Completed</h2>
     <table   style="position: relative;left: -100px;top: -100px;border-spacing:60px;">
-    
+    {%for getdata in Modules_completed %}
     <td>
     <div id="b" onclick="alert('div');">
     <a href="" onclick="func1(event)" id="reopen"><div id="accept"><div id="accept1">REOPEN</div></div></a>
@@ -947,7 +955,7 @@
     <sec  id="f">MODULE</sec>
     <p id="d">Description</p>
     </div>
-    
+    {% endfor %}
     </table>`;
             alert("upload");
               
@@ -978,7 +986,8 @@
                 }
             });
             event.stopPropagation();
-            event.preventDefault();
+
+            
                 
                  
                  

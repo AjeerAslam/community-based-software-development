@@ -204,12 +204,13 @@ class Projects(models.Model):
     pr_name = models.CharField(max_length=1000, blank=True, null=True)
     pr_type = models.CharField(max_length=1000, blank=True, null=True)
     pr_description = models.TextField(blank=True, null=True)
-    pr_due = models.DateTimeField(blank=True, null=True)
+    pr_due = models.DateField(blank=True, null=True)
     pr_closing = models.TextField(blank=True, null=True)
     pr_file = models.TextField(blank=True, null=True)
     pr_cl_id = models.IntegerField(blank=True, null=True)
     pr_ex_id = models.IntegerField(blank=True, null=True)
     pr_status = models.CharField(max_length=50)
+    pr_date = models.DateField()
 
     class Meta:
         managed = False

@@ -11,8 +11,14 @@ from home.models import Projects
 def index(request):
     #client_table=Clients.objects.raw('SELECT *,cl_id AS age FROM clients')
     #client_table=Clients.objects.all()
-    projects_table=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="new"')
-    return render(request,'index.html',{'Projects':projects_table})
+    projects_latest=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="new"')
+    projects_task=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="waiting"')
+    projects_review=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="review"')
+    projects_completed=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="completed"')
+    projects_completed=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="completed"')
+    projects_completed=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="completed"')
+    projects_completed=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="completed"')
+    return render(request,'index.html',{'Projects':projects_latest,'Projects_task':projects_task,'Projects_review':projects_review,'Projects_completed':projects_completed})
 
 def accept(request):
     print(request)
