@@ -909,14 +909,14 @@
                  document.getElementById("section").innerHTML=`<div id="s1">
     <h2>Modules</h2>
     <table   style="position: relative;left: -100px;top: -100px;border-spacing:60px;">
-    {%for getdata in Modules_latest %}
+    {%for getdata in Modules %}
     <td>
     <div id="b" onclick="alert('div');">
     <a href="" onclick="func4(event)" id="progressm"><div id="close"><div id="close1">80%</div></div></a>
     <a href="" onclick="func5(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>
     <a href="" onclick="func6(event)" id="edit"><div id="progress"><div id="progress1">EDIT</div></div></a>
-    <sec  id="f">MODULE</sec>
-    <p id="d">Description</p>
+    <sec  id="f">{{getdata.md_name}}</sec>
+    <p id="d">{{getdata.md_description}}</p>
     </div>
     </td>
     {% endfor %}
@@ -935,8 +935,8 @@
     <a href="" onclick="func5(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>
     <a href="" onclick="func9(event)" id="downm"><img src="Download.svg" id="download1"></a>
     <a href="" onclick="func6(event)" id="edit"><div id="progress"><div id="progress1">ACCEPT</div></div></a>
-    <sec  id="f">MODULE</sec>
-    <p id="d">Description</p>
+    <sec  id="f">{{getdata.md_name}}</sec>
+    <p id="d">{{getdata.md_description}}</p>
     </div>
     {% endfor %}
     
@@ -952,8 +952,8 @@
     <a href="" onclick="func1(event)" id="reopen"><div id="accept"><div id="accept1">REOPEN</div></div></a>
     <a href="" onclick="func9(event)" id="downm"><img src="Download.svg" id="download1"></a>
     <a href="" onclick="func2(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>
-    <sec  id="f">MODULE</sec>
-    <p id="d">Description</p>
+    <sec  id="f">{{getdata.md_name}}</sec>
+    <p id="d">{{getdata.md_description}}</p>
     </div>
     {% endfor %}
     </table>`;
