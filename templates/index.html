@@ -908,7 +908,9 @@
                  event.stopPropagation();
                  document.getElementById("section").innerHTML=`<div id="s1">
     <h2>Modules</h2>
+    <a href="" onclick="{% static url /module_creation/%}" id="create"><div id="progress"><div id="progress1">create module</div></div></a>
     <table   style="position: relative;left: -100px;top: -100px;border-spacing:60px;">
+        
     {%for getdata in Modules %}
     <td>
     <div id="b" onclick="alert('div');">
