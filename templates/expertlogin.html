@@ -1,0 +1,134 @@
+{%load static%}
+
+<doctype html>
+    <head>
+    <title>expert</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+    #log{
+        position: absolute;
+        width: 499px;
+        height: 750px;
+        left: -65px;
+        top: -1px;
+    }
+    #logcen{
+        position: absolute;
+        width: 75%;
+        height: 550px;
+        z-index: -1;
+        left: 370px;
+        top: 90px;
+    }
+    
+    #top{
+        position: absolute;
+        width: 600px;
+        height: 100px;
+        left: 700px;
+        top: 1px;
+        
+        font-family: 'Fondamento';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 55px;
+        text-decoration-line: underline;
+
+        color: #000000;
+        }
+    #detail{
+        position: relative;
+        left:800px;
+        top:250px
+    }
+    #center{
+        width: 40%;
+        height: 550px;
+        
+        left: 370px;
+        top: 90px;
+
+    }
+    #b1{
+        position: relative;
+        background: #97baef;
+        width: 100px;
+        height: 40px;
+        left: 100px;
+        bottom: 0px;
+    }
+    #error{
+        color:red;
+
+    }
+    </style>
+    </head>
+
+    <body>
+        {% load static %}
+        
+        <img id="log" src="{% static '/images/loginimg.svg'%}">
+        <div id="top">
+            <p>LOGIN TO YOUR ACCOUNT</p>
+        </div> 
+        <div id="center">   
+            <img id="logcen" src="{% static '/images/logincenter.svg'%}">
+            <div id="detail">
+                <form name="login" action='/expert_login/' method="POST">
+                    {% csrf_token %}
+                
+                
+                 <label style="font-size:x-large">USERNAME</label><br>
+                 <input type="text" id="uname" name="username" size="40px">
+                 <br> <br>
+                 <label style="font-size:x-large">PASSWORD</label><br>
+                 <input type="password" id="pass" name="password" size="40px">
+                 <br><br>
+                 <input type="submit" name="LOGIN" value="LOGIN" id="b1" > <br><span id="error"></span>   
+                </form>    
+            </div>    
+        </div>  
+    <script>
+        document.getElementById("error").innerHTML="{{login_details.username}}";
+        function login_user() {
+           uname=document.getElementById("uname").value;
+           pass=document.getElementById("pass").value;
+        
+           /*$.ajax({
+            url: '/expert_login/',
+            type: 'GET',// This is the default though, you don't actually need to always mention it
+            data:{
+                'uname':uname
+            },
+            success: function(response) {
+                
+                var instance = JSON.parse(response["rs"]);
+                alert(instance);
+            
+            },
+            failure: function(response) { 
+                alert('Got an error dude');
+            }
+        });*/
+            
+
+            
+        
+            alert("project details");
+         
+       } 
+       
+    </script> 
+    </body>
+</html> 
+<!--<form action="/team_name_url/" method="post">
+    <label for="team_name">Enter name: </label>
+    <input id="team_name" type="text" name="name_field" value="Default name for team.">
+    <input type="submit" value="OK">
+</form> 
+-->      
+
+
+
+   
