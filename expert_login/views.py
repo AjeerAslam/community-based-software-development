@@ -7,6 +7,10 @@ from home.models import Clients
 from django.http import JsonResponse
 from home.models import Projects
 from home.models import Experts
+from expert_login.functions import handle_uploaded_file  #functions.py
+from expert_login.forms import module_creation_form #forms.py
+   
+
 
 # Create your views here.
 
@@ -19,8 +23,8 @@ def load(request):
 def index(request):
     #client_table=Clients.objects.raw('SELECT *,cl_id AS age FROM clients')
     #client_table=Clients.objects.all()
-        username= request.POST['username']
-        password = request.POST['password']
+        #username= request.POST["uname"]
+        #password = request.POST['password']
         login_details = {
          'username': username,
          'password': password
@@ -34,6 +38,7 @@ def index(request):
         modules_review=Modules.objects.raw('SELECT * FROM modules WHERE md_status="review"')
         modules_completed=Modules.objects.raw('SELECT * FROM modules WHERE md_status="completed"')
         if login_verification:
+            print("hello")
             return render(request,'index.html',{'Projects':projects_latest,'Projects_task':projects_task,'Projects_review':projects_review,'Projects_completed':projects_completed,'Modules':modules,'Modules_review':modules_review,'Modules_completed':modules_completed,'login_details':login_details})
         else:
             login_details["username"]="username/password error"
@@ -51,3 +56,29 @@ def accept(request):
 def module_creation(request):
     
     return render(request,'module_creation.html')
+def file(request):  
+    if request.method == 'POST':  
+        module = module_creation_form(request.POST, request.FILES)
+         
+        if module.is_valid():
+            
+            handle_uploaded_file(request.FILES['md_input']) 
+            module.save() 
+            #model_instance = student.save(commit=False)
+            #model_instance.save()
+            return HttpResponse("File uploaded successfuly")  
+    else:  
+        module = module_creation_form()  
+        return render(request,"file.html",{'form':module})
+'''def file(request):
+      
+    return render(request,'file.html')
+def file_upload(request):
+    handle_uploaded_file(request.FILE['myfile'])
+    print (hello)
+    return render(request,'file.html')'''
+
+'''def handle_uploaded_file(f):  
+    with open('myapp/static/upload/'+f.name, 'wb+') as destination:  
+        for chunk in f.chunks():  
+            destination.write(chunk)'''

@@ -75,12 +75,14 @@
         <div id="center">   
             <img id="logcen" src="{% static '/images/logincenter.svg'%}">
             <div id="detail">
-                <form name="login" action='/expert_login/' method="POST">
+                <a href="{% url 'expert:module_creation' %}">now</a>
+                
+                <form  action='/expert_login/' method="POST">
                     {% csrf_token %}
                 
                 
                  <label style="font-size:x-large">USERNAME</label><br>
-                 <input type="text" id="uname" name="username" size="40px">
+                 <input type="text" id="uname" name="uname" size="40px">
                  <br> <br>
                  <label style="font-size:x-large">PASSWORD</label><br>
                  <input type="password" id="pass" name="password" size="40px">

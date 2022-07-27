@@ -13,7 +13,7 @@ def index(request):
     #client_table=Clients.objects.raw('SELECT *,cl_id AS age FROM clients')
     #client_table=Clients.objects.all()
     if request.method == 'GET':
-        id= request.GET.get('user_name')
+        #id= request.GET.get('user_name')
         #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
         Projects.objects.filter(pr_id=id).update(pr_status='waiting')
         return JsonResponse({"rs": id})

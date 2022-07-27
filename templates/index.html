@@ -1,7 +1,8 @@
 
-{%load static%}
+
 
 <doctype html>
+    {%load static%}
     <head>
     <title>expert</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -838,7 +839,7 @@
     <div id="b" onclick="alert('div');">
     <a href="" onclick="func7(event)" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
     <a href="" onclick="func8(event)" id="clie"><div id="c"><div id="c1">C</div></div></a>
-    <a href="" onclick="func9(event)" id="down"><div id="download"><img src="Download.svg" id="download1"></div></a>
+    <a href="" onclick="func9(event)" id="down"><div id="download"><img src="{% static '/images/Download.svg'%}" id="download1"></div></a>
     
     <sec  id="f">{{getdata.pr_name}}</sec>
     <p id="d">{{getdata.pr_description}}</p><br>
@@ -850,7 +851,7 @@
     <div id="b"  onclick="alert('div');">
     <a href="" onclick="func7(event)" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
     <a href="" onclick="func8(event)" id="clie"><div id="c"><div id="c1">C</div></div></a>
-    <a href="" onclick="func9(event)" id="down"><div id="download"><img src="Download.svg" id="download1"></div></a>
+    <a href="" onclick="func9(event)" id="down"><div id="download"><img src="{% static '/images/Download.svg'%}" id="download1"></div></a>
     <sec  id="f">hlloo</sec>
     <p id="d">hiii</p><br>
     <p id="ddd">how are you</p>
@@ -874,7 +875,7 @@
     <div id="b" onclick="alert('div');">
     <a href="" onclick="func7(event)" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
     <a href="" onclick="func8(event)" id="clie"><div id="c"><div id="c1">C</div></div></a>
-    <a href="" onclick="func9(event)" id="down"><div id="download"><img src="Download.svg" id="download1"></div></a>
+    <a href="" onclick="func9(event)" id="down"><div id="download"><img src="{% static '/images/Download.svg'%}" id="download1"></div></a>
     <sec  id="f">{{getdata.pr_name}}</sec>
     <p id="d">{{getdata.pr_description}}</p><br>
     <p id="ddd">{{getdata.pr_date}}</p>
@@ -885,7 +886,7 @@
     <div id="b"  onclick="alert('div');">
     <a href="" onclick="func7(event)" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
     <a href="" onclick="func8(event)" id="clie"><div id="c"><div id="c1">C</div></div></a>
-    <a href="" onclick="func9(event)" id="down"><div id="download"><img src="Download.svg" id="download1"></div></a>
+    <a href="" onclick="func9(event)" id="down"><div id="download"><img src="{% static '/images/Download.svg'%}" id="download1"></div></a>
     <sec  id="f">hlloo</sec>
     <p id="d">hii</p><br>
     <p id="ddd">how are you</p>
@@ -908,13 +909,17 @@
                  event.stopPropagation();
                  document.getElementById("section").innerHTML=`<div id="s1">
     <h2>Modules</h2>
-    <a href="" onclick="{% static url /module_creation/%}" id="create"><div id="progress"><div id="progress1">create module</div></div></a>
+    <a href="">hello</a>
+    <a href="www.google.com" onclick="javascript:test(this);" id="first">click</a>
+    <button onclick="document.location='{% url 'expert:module_creation' %}'">HTML Tutorial</button>
+
+    <a href=""  id="create"><div id="progress"><div id="progress1">create module</div></div></a>
     <table   style="position: relative;left: -100px;top: -100px;border-spacing:60px;">
         
     {%for getdata in Modules %}
     <td>
     <div id="b" onclick="alert('div');">
-    <a href="" onclick="func4(event)" id="progressm"><div id="close"><div id="close1">80%</div></div></a>
+    <a href="" onclick="func3(event)" id="progressm"><div id="close"><div id="close1">80%</div></div></a>
     <a href="" onclick="func5(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>
     <a href="" onclick="func6(event)" id="edit"><div id="progress"><div id="progress1">EDIT</div></div></a>
     <sec  id="f">{{getdata.md_name}}</sec>
@@ -933,9 +938,9 @@
     {%for getdata in Modules_review %}
     <td>
     <div id="b" onclick="alert('div');">
-    <a href="" onclick="func4(event)" id="suggestion"><div id="close"><div id="close1">SUGGESTION</div></div></a>
+    <a href="" onclick="func3(event);" id="suggestion"><div id="close"><div id="close1">SUGGESTION</div></div></a>
     <a href="" onclick="func5(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>
-    <a href="" onclick="func9(event)" id="downm"><img src="Download.svg" id="download1"></a>
+    <a href="" onclick="func9(event)" id="downm"><img src="{% static '/images/Download.svg'%}" id="download1"></a>
     <a href="" onclick="func6(event)" id="edit"><div id="progress"><div id="progress1">ACCEPT</div></div></a>
     <sec  id="f">{{getdata.md_name}}</sec>
     <p id="d">{{getdata.md_description}}</p>
@@ -952,7 +957,7 @@
     <td>
     <div id="b" onclick="alert('div');">
     <a href="" onclick="func1(event)" id="reopen"><div id="accept"><div id="accept1">REOPEN</div></div></a>
-    <a href="" onclick="func9(event)" id="downm"><img src="Download.svg" id="download1"></a>
+    <a href="" onclick="func9(event)" id="downm"><img src="{% static '/images/Download.svg'%}" id="download1"></a>
     <a href="" onclick="func2(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>
     <sec  id="f">{{getdata.md_name}}</sec>
     <p id="d">{{getdata.md_description}}</p>
@@ -967,6 +972,7 @@
                  alert("progress");
                  
             }
+             
             function accept(pr_id) {
 
                 alert(pr_id);
@@ -998,6 +1004,7 @@
             }
             function func3() {
                  event.stopPropagation();
+                 document.location.replace("{% url 'expert:module_creation' %}");
              
                  alert("project details");
               
@@ -1006,6 +1013,12 @@
     
     
     /*layout*/
+    function button1() {
+        alert(8);
+        
+        
+      }
+      
     function click()
     {
     document.getElementById("a22").innerHTML="Home";   

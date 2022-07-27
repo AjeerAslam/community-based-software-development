@@ -187,7 +187,7 @@ class Files(models.Model):
 class Modules(models.Model):
     md_id = models.AutoField(primary_key=True)
     md_name = models.CharField(max_length=1000, blank=True, null=True)
-    md_input = models.TextField(blank=True, null=True)
+    md_input = models.FileField()
     md_input_file = models.TextField(blank=True, null=True)
     md_description = models.TextField(blank=True, null=True)
     md_output = models.TextField(blank=True, null=True)
