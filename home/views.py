@@ -12,12 +12,7 @@ from home.models import Projects
 def index(request):
     #client_table=Clients.objects.raw('SELECT *,cl_id AS age FROM clients')
     #client_table=Clients.objects.all()
-    if request.method == 'GET':
-        #id= request.GET.get('user_name')
-        #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
-        Projects.objects.filter(pr_id=id).update(pr_status='waiting')
-        return JsonResponse({"rs": id})
-        print(hello)
+    
     projects_latest=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="new"')
     projects_task=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="waiting"')
     projects_review=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="review"')
@@ -35,6 +30,7 @@ def accept(request):
         Projects.objects.filter(pr_id=id).update(pr_status='waiting')
         return JsonResponse({"rs": success})
         print(hello)
+
     
 
     

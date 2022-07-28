@@ -1,0 +1,39 @@
+{% extends "ex_base.html" %}
+{% block section %}
+<div id="t2">
+    <h2>MY TASKS</h2>
+    <table  style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
+    {%for getdata in Projects_task %} 
+    <tr>
+    <td>
+    <div id="b" onclick="func4(event)">
+    <a href="" onclick="func4(event)" id="clos"><div id="close"><div id="close1">CLOSE</div></div></a>
+    <a href="" onclick="func5(event)" id="proj"><div id="c"><div id="c1">C</div></div></a>
+    <a href="" onclick="func6(event)" id="prog"><div id="progress"><div id="progress1">PROGRESS</div></div></a>
+    
+    <sec  id="f">{{getdata.pr_name}}</sec>
+    <p id="d">{{getdata.pr_description}}</p><br>
+    <p id="ddd">{{getdata.pr_due}}</p>
+    </div>
+    </td>
+    <!--
+    <td>
+    <div id="b"  onclick="func4(event)">
+    <a href="" onclick="func4(event)" id="clos"><div id="close"><div id="close1">CLOSE</div></div></a>
+    <a href="" onclick="func5(event)" id="proj"><div id="c"><div id="c1">C</div></div></a>
+    <a href="" onclick="func6(event)" id="prog"><div id="progress"><div id="progress1">PROGRESS</div></div></a>
+    <sec  id="f">hlooo</sec>
+    <p id="d">hlloo</p><br>
+    <p id="ddd">hlloo</p>
+    </div>
+    </td> -->
+    </tr>
+    {% endfor %}
+    </table>
+</div>
+{% endblock section %}
+
+    
+    
+    
+    

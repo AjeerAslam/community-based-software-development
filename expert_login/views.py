@@ -14,17 +14,17 @@ from expert_login.forms import module_creation_form #forms.py
 
 # Create your views here.
 
-def load(request):
+'''def load(request):
     
-    return render(request,'expertlogin.html')
+    return render(request,'expertlogin.html')'''
 
         
     
 def index(request):
     #client_table=Clients.objects.raw('SELECT *,cl_id AS age FROM clients')
     #client_table=Clients.objects.all()
-        #username= request.POST["uname"]
-        #password = request.POST['password']
+        username= request.POST["uname"]
+        password = request.POST['password']
         login_details = {
          'username': username,
          'password': password
@@ -37,6 +37,8 @@ def index(request):
         modules=Modules.objects.raw('SELECT * FROM modules WHERE md_status="new"')
         modules_review=Modules.objects.raw('SELECT * FROM modules WHERE md_status="review"')
         modules_completed=Modules.objects.raw('SELECT * FROM modules WHERE md_status="completed"')
+        print(projects_task)
+        print(projects_task)
         if login_verification:
             print("hello")
             return render(request,'index.html',{'Projects':projects_latest,'Projects_task':projects_task,'Projects_review':projects_review,'Projects_completed':projects_completed,'Modules':modules,'Modules_review':modules_review,'Modules_completed':modules_completed,'login_details':login_details})
@@ -46,7 +48,6 @@ def index(request):
     
 
 def accept(request):
-    print(request)
     if request.method == 'GET':
         id= request.GET.get('id')
         #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
@@ -82,3 +83,23 @@ def file_upload(request):
     with open('myapp/static/upload/'+f.name, 'wb+') as destination:  
         for chunk in f.chunks():  
             destination.write(chunk)'''
+
+def ex_home(request):
+    projects_latest=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="new"')
+    return render(request,'ex_home.html',{'Projects':projects_latest})
+def ex_myworks(request):
+    projects_task=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="waiting"')
+    return render(request,'ex_myworks.html',{'Projects_task':projects_task})
+def ex_review(request):
+    projects_review=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="review"')
+    return render(request,'ex_review.html',{'Projects_review':projects_review})
+def ex_completed(request):
+    projects_completed=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="completed"')
+    return render(request,'ex_completed.html',{'Projects_completed':projects_completed})
+def accept(request):
+    if request.method == 'GET':
+        print(5)
+        id= request.GET.get('id')
+        #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
+        Projects.objects.filter(pr_id=id).update(pr_status='waiting')
+        return JsonResponse({"rs": success})

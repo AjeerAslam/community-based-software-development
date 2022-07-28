@@ -1,0 +1,36 @@
+{% extends "ex_base.html" %}
+{% block section %}
+<div id="t3" >
+    {%load static%}
+    <h2>WORKS UNDER REVIEW</h2>
+    <table   style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
+    {%for getdata in Projects_review %}
+    <tr>
+    <td>
+    <div id="b" onclick="alert('div');">
+    <a href="" onclick="func7(event)" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
+    <a href="" onclick="func8(event)" id="clie"><div id="c"><div id="c1">C</div></div></a>
+    <a href="" onclick="func9(event)" id="down"><div id="download"><img src="{% static '/images/Download.svg' %}" i" id="download1"></div></a>
+    
+    <sec  id="f">{{getdata.pr_name}}</sec>
+    <p id="d">{{getdata.pr_description}}</p><br>
+    <p id="ddd">{{getdata.pr_due}}</p>
+    </div>
+    </td>
+    <!--
+    <td>
+    <div id="b"  onclick="alert('div');">
+    <a href="" onclick="func7(event)" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
+    <a href="" onclick="func8(event)" id="clie"><div id="c"><div id="c1">C</div></div></a>
+    <a href="" onclick="func9(event)" id="down"><div id="download"><img src="{% static '/images/Download.svg'%}" id="download1"></div></a>
+    <sec  id="f">hlloo</sec>
+    <p id="d">hiii</p><br>
+    <p id="ddd">how are you</p>
+    </div>
+    </td>
+     -->
+    </tr>
+    {% endfor %}  
+    </table>
+    </div>
+{% endblock section %}
