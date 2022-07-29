@@ -1,4 +1,45 @@
-{% extends "ex_base.html" %}
+<doctype html>
+    {%load static%}
+    <head>
+    <title>expert</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/expert/expert.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    
+    
+    </head>
+    
+    <body>
+    <div id="dashboard">
+    <img src="{% static '/images/List.svg'%}">	
+    </div>	
+    <div id="header">
+    <a id="a11"><b>Dashboard</b></a><br>
+    <img src="{% static '/images/arrow.svg'%}">
+    <a id="a22"><b>Review</b></a><br>
+    {% block header %}
+      
+    {% endblock  %}
+    <div id="a33">Welcome user</div><br>
+    <a id=a44><div id=d1><span>N</span></div></a><br>
+    <a id=a55><img src="{% static '/images/Logout.svg'%}"></a><br>
+    </div>
+    <div id="nav">
+    <div id=n1>
+    <img src="{% static '/images/vector.svg'%}" id='home' ><a href="{% url 'expert:ex_home' %}" id=a1><b>Home</b></a>
+    </div>
+    <div id=n2>
+    <img src="{% static '/images/Maintenance.svg'%}" id='mywork'><a href="{% url 'expert:ex_myworks' %}" id=a2><b>My Works</b></a>
+    </div>
+    <div id=n3>
+    <img src="{% static '/images/View.svg'%}" id='review'><a href="{% url 'expert:ex_review' %}" id=a3><b>Review</b></a>
+    </div>
+    <div id=n4>
+    <img src="{% static '/images/Audit.svg'%}" id='completed'><a href="{% url 'expert:ex_completed' %}" id=a4><b>Completed</b></a>
+    </div>
+    </div>
+    <div id="section">
 {% block section %}
 <div id="t1">
     <h2>LATEST WORKS</h2>
@@ -40,3 +81,7 @@
     </table>
 </div>
 {% endblock section %}
+</div>
+<script src="{% static '/expert/expert.js' %}"></script>
+</body>
+</html>

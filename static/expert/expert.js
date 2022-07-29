@@ -19,7 +19,25 @@ function accept(pr_id) {
     }
 });
 }
-    
+function project_close(event,pr_id) {
+
+    alert(pr_id);
+  
+   $.ajax({
+    url: '/project_close/',
+    type: 'GET',
+    data:{
+        'id':pr_id
+    },
+    success: function(response) {
+        $("html").html(response);
+    },
+    failure: function(response) { 
+        alert('Got an error dude');
+    }
+});
+event.preventDefault();
+} 
     
     
         

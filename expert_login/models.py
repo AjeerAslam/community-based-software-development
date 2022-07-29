@@ -208,7 +208,7 @@ class Projects(models.Model):
     pr_description = models.TextField(blank=True, null=True)
     pr_due = models.DateField(blank=True, null=True)
     pr_closing = models.TextField(blank=True, null=True)
-    pr_file = models.TextField(blank=True, null=True)
+    pr_file = models.FileField()
     pr_cl_id = models.IntegerField(blank=True, null=True)
     pr_ex_id = models.IntegerField(blank=True, null=True)
     pr_status = models.CharField(max_length=50)

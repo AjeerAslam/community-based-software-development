@@ -1,0 +1,23 @@
+{% extends "ex_base.html" %}
+{% block section %}
+<html>
+<head>
+<title>Final project closing</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container" style="padding:20px;">
+    <div class="row">
+        <div class="col-12">
+            <p><h1>Final project closing</h1></p>
+            <form action='/project_close/' method="POST" class="post-form" enctype="multipart/form-data">  
+                    {% csrf_token %}  
+                    {{ form.as_p }}  
+                <button type="submit" class="btn btn-primary" name="project_close" >UPLOAD AND CLOSE</button>  
+            </form>  
+        </div>
+    </div>
+</div>
+</body>  
+</html>
+{% endblock section %}

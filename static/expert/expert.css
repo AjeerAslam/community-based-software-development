@@ -682,3 +682,93 @@
         top:-10px;
         left:30px;
      }
+     #new_modules{
+        position: absolute;
+        width: 150px;
+        height: 50px;
+        top: 10px;
+        left: 350px;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        
+        background: #41242F;
+        }
+     #manage_modules{
+        position: absolute;
+        width: 150px;
+        height: 50px;
+        top: 10px;
+        left: 500px;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        
+        background: #41242F;
+        }
+     #review_modules{
+        position: absolute;
+        width: 150px;
+        height: 50px;
+        top: 10px;
+        left: 650px;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        
+        background: #41242F;
+        }
+     #completed_modules{
+        position: absolute;
+        width: 150px;
+        height: 50px;
+        top: 10px;
+        left: 800px;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        
+        background: #41242F;
+        }
+                #text_navbar_modules{
+                    position: relative;
+                    left: 50px;
+                    top: 15px;
+                    font-family: 'Inter';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 17px;
+                    color: #FFFFFF;
+                    }
+                #text_navbar_modules1{
+                        position: relative;
+                        left: 43px;
+                        top: 15px;
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 14px;
+                        line-height: 17px;
+                        color: #FFFFFF;
+                        }
+                        #text_navbar_modules2{
+                            position: relative;
+                            left: 45px;
+                            top: 15px;
+                            font-family: 'Inter';
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 14px;
+                            line-height: 17px;
+                            color: #FFFFFF;
+                            }
+                            #text_navbar_modules3{
+                                position: relative;
+                                left: 37px;
+                                top: 15px;
+                                font-family: 'Inter';
+                                font-style: normal;
+                                font-weight: 700;
+                                font-size: 14px;
+                                line-height: 17px;
+                                color: #FFFFFF;
+                                }
+        
+        

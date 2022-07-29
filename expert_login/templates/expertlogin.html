@@ -82,7 +82,7 @@
                 
                 
                  <label style="font-size:x-large">USERNAME</label><br>
-                 <input type="text" id="uname" name="uname" size="40px">
+                 <input type="text" id="uname" name="username" size="40px">
                  <br> <br>
                  <label style="font-size:x-large">PASSWORD</label><br>
                  <input type="password" id="pass" name="password" size="40px">
@@ -92,7 +92,7 @@
             </div>    
         </div>  
     <script>
-        document.getElementById("error").innerHTML="{{login_details.username}}";
+        document.getElementById("error").innerHTML="{{error}}";
         function login_user() {
            uname=document.getElementById("uname").value;
            pass=document.getElementById("pass").value;
