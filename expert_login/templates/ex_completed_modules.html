@@ -1,0 +1,26 @@
+{% extends "ex_new_modules.html" %}
+
+  
+{% block section %}
+{% load static %}
+<div id="t2">
+    <h2>{{data}}</h2>
+    <h2>COMPLETED MODULES</h2>
+    <table  style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
+        {%for getdata in Modules_completed %}
+    </tr>
+        <td>
+        <div id="b" onclick="alert('div');">
+        <a href="" onclick="func1(event)" id="reopen"><div id="accept"><div id="accept1">REOPEN</div></div></a>
+        <a href="" onclick="func9(event)" id="downm"><img src="{% static '/images/Download.svg'%}" id="download1"></a>
+        <a href="" onclick="func2(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>
+        <sec  id="f">{{getdata.md_name}}</sec>
+        <p id="d">{{getdata.md_description}}</p>
+        </div>
+        </td>
+    </tr>
+        {% endfor %}
+
+</div>
+
+{% endblock section %}

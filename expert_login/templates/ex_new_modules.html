@@ -1,10 +1,32 @@
 
 {% extends "ex_home.html" %}
 {% block header %}
-    <a><div id="new_modules"><div id="text_navbar_modules">NEW</div></div></a>
-    <a><div id="manage_modules"><div id="text_navbar_modules1">MANAGE</div></div></a>
-    <a><div id="review_modules"><div id="text_navbar_modules2">REVIEW</div></div></a>
-    <a><div id="completed_modules"><div id="text_navbar_modules3">COMPLETED</div></div></a>
+    <a href="{% url 'expert:ex_new_modules' %}"><div id="new_modules"><div id="text_navbar_modules">NEW</div></div></a>
+    <a href="{% url 'expert:ex_manage_modules' %}"><div id="manage_modules"><div id="text_navbar_modules1">MANAGE</div></div></a>
+    <a href="{% url 'expert:ex_review_modules' %}"><div id="review_modules"><div id="text_navbar_modules2">REVIEW</div></div></a>
+    <a href="{% url 'expert:ex_completed_modules' %}"><div id="completed_modules"><div id="text_navbar_modules3">COMPLETED</div></div></a>
 
 {% endblock header %}
   
+{% block section %}
+<div id="t2">
+    <h2>{{data}}</h2>
+    <h2>NEW MODULES</h2>
+    <table  style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
+    {%for getdata in Modules_new %}
+    <tr>
+    <td>
+    <div id="b" onclick="alert('div');">
+    
+    
+    <a href="" onclick="accept({{getdata.pr_id}});" id="u"><div id="accept"><div id="accept1">EDIT</div></div></a>
+    <sec  id="f">{{getdata.md_name}}</sec>
+    <p id="d">{{getdata.md_description}}</p>
+    </div>
+    </td>
+    </tr>
+    {% endfor %}
+    </table>
+</div>
+
+{% endblock section %}

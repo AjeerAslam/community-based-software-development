@@ -93,7 +93,6 @@ class Clients(models.Model):
 class Consists(models.Model):
     cn_pr_id = models.IntegerField(primary_key=True)
     cn_md_id = models.IntegerField()
-    cn_md_due = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         managed = False

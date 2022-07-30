@@ -38,6 +38,44 @@ function project_close(event,pr_id) {
 });
 event.preventDefault();
 } 
+function module_page(event,pr_id) {
+
+    alert(pr_id);
+  
+   $.ajax({
+    url: '/ex_new_modules/',
+    type: 'GET',
+    data:{
+        'id':pr_id
+    },
+    success: function(response) {
+        $("html").html(response);
+    },
+    failure: function(response) { 
+        alert('Got an error dude');
+    }
+});
+event.preventDefault();
+} 
+function project_download(event,pr_id) {
+
+    alert(pr_id);
+  
+   $.ajax({
+    url: '/download_request/',
+    type: 'GET',
+    data:{
+        'id':pr_id
+    },
+    success: function(response) {
+        $("html").html(response);
+    },
+    failure: function(response) { 
+        alert('Got an error dude');
+    }
+});
+event.preventDefault();
+} 
     
     
         
@@ -82,6 +120,7 @@ event.preventDefault();
     <sec  id="f">{{getdata.md_name}}</sec>
     <p id="d">{{getdata.md_description}}</p>
     </div>
+    </td>
     {% endfor %}
     
     </table>

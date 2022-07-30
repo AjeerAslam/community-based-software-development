@@ -1,0 +1,14 @@
+ihorihioehr
+ertjeijri
+ojtoje
+def download_request(request):
+    if request.method == 'GET':
+        request.session['pr_id']= request.GET.get('id')
+        #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
+        #Projects.objects.filter(pr_id=id).update(pr_status='waiting')
+        projects_download=Projects.objects.raw('SELECT * FROM projects WHERE  pr_id=%s',[request.session['pr_id']])
+        request.session['file_name']= projects_download[0].pr_file
+        projects_review=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="review"')
+        print(90)
+        print(request.session['file_name'])
+        return redirect('/download_file/')
