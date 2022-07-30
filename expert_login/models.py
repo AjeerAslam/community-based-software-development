@@ -90,7 +90,14 @@ class Clients(models.Model):
         db_table = 'clients'
 
 
+class Consists(models.Model):
+    cn_pr_id = models.IntegerField(primary_key=True)
+    cn_md_id = models.IntegerField()
 
+    class Meta:
+        managed = False
+        db_table = 'consists'
+        unique_together = (('cn_pr_id', 'cn_md_id'),)
 
 
 class Developers(models.Model):
@@ -179,11 +186,11 @@ class Files(models.Model):
 class Modules(models.Model):
     md_id = models.AutoField(primary_key=True)
     md_name = models.CharField(max_length=1000, blank=True, null=True)
-    md_input = models.FileField()
-    md_input_file = models.TextField(blank=True, null=True)
+    md_input = models.TextField(blank=True, null=True)
+    md_input_file = models.FileField()
     md_description = models.TextField(blank=True, null=True)
     md_output = models.TextField(blank=True, null=True)
-    md_output_file = models.TextField(blank=True, null=True)
+    md_output_file = models.FileField()
     md_dev_id = models.IntegerField(blank=True, null=True)
     md_status = models.CharField(max_length=50)
     md_due = models.DateField(blank=True, null=True)
@@ -210,4 +217,5 @@ class Projects(models.Model):
     class Meta:
         managed = False
         db_table = 'projects'
+
 

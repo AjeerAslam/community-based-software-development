@@ -770,5 +770,25 @@
                                 line-height: 17px;
                                 color: #FFFFFF;
                                 }
+.create_new_modules{
+    position: relative;
+    width: 120px;
+    height: 50px;
+    top: 0px;
+    left: 1100px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+        
+    background: #41242F;
+
+}
+#error{
+    color:red;
+
+}
+#ok{
+    color:green;
+
+}
         
         

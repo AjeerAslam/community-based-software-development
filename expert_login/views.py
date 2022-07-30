@@ -32,28 +32,32 @@ def load(request):
 
     
 
-def accept(request):
+'''def accept(request):
     if request.method == 'GET':
         id= request.GET.get('id')
         #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
         Projects.objects.filter(pr_id=id).update(pr_status='waiting')
-        return JsonResponse({"rs": success})
-def module_creation(request):
-    return render(request,'module_creation.html')
-def file(request):  
-    if request.method == 'POST':  
+        return JsonResponse({"rs": success})'''
+'''def module_page(request):
+    return render(request,'module_page.html')'''
+def module_creation(request):  
+    if 'module_creation_button' in request.POST:  
         module = module_creation_form(request.POST, request.FILES)
          
         if module.is_valid():
-            
-            handle_uploaded_file(request.FILES['md_input']) 
-            module.save() 
+            #module.pr_ex_id=request.session['pr_id']
+            #module.md_staus='new'
+            handle_uploaded_file(request.FILES['md_input_file']) 
+            handle_uploaded_file(request.FILES['md_output_file']) 
+            md=module.save() 
+            Modules.objects.filter(md_id=md.md_id).update(md_status='new',md_pr_id=request.session['pr_id'])
+            #Modules.objects.raw('UPDATE modules SET md_output="new" WHERE md_id=id',[md.md_id])
             #model_instance = student.save(commit=False)
             #model_instance.save()
-            return HttpResponse("File uploaded successfuly")  
+            return redirect('/ex_new_modules/')  
     else:  
         module = module_creation_form()  
-        return render(request,"file.html",{'form':module})
+        return render(request,"module_creation.html",{'form':module})
 '''def file(request):
       
     return render(request,'file.html')
@@ -79,11 +83,11 @@ def ex_login_verification(request):
         password = request.POST['password']
         request.session['username'] = username
         login_verification=Experts.objects.raw('SELECT * FROM experts WHERE ex_id=%s AND ex_password=%s',[username,password])
-    if login_verification:
-        projects_latest=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="new"')
-        return render(request,'ex_home.html',{'Projects':projects_latest})
-    else:
-        return render(request,'expertlogin.html',{'error':"username/password error"})
+        if login_verification:
+            projects_latest=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="new"')
+            return render(request,'ex_home.html',{'Projects':projects_latest})
+    
+    return render(request,'expertlogin.html',{'error':"username/password error"})
 
 #project
 def ex_home(request):
@@ -105,7 +109,8 @@ def accept(request):
         id= request.GET.get('id')
         #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
         Projects.objects.filter(pr_id=id).update(pr_status='waiting',pr_ex_id=request.session['username'])
-        return JsonResponse({"rs": 300})
+        projects_latest=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="new"')
+        return render(request,'ex_home.html',{'Projects':projects_latest,'ok':"success"})
 def project_close(request):
     if request.method == 'GET':
         request.session['pr_id']= request.GET.get('id')

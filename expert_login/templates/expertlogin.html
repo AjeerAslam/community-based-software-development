@@ -87,12 +87,11 @@
                  <label style="font-size:x-large">PASSWORD</label><br>
                  <input type="password" id="pass" name="password" size="40px">
                  <br><br>
-                 <input type="submit" name="LOGIN" value="LOGIN" id="b1" > <br><span id="error"></span>   
+                 <input type="submit" name="LOGIN" value="LOGIN" id="b1" > <br><span id="error">{{error}}</span>   
                 </form>    
             </div>    
         </div>  
     <script>
-        document.getElementById("error").innerHTML="{{error}}";
         function login_user() {
            uname=document.getElementById("uname").value;
            pass=document.getElementById("pass").value;

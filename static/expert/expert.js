@@ -10,14 +10,14 @@ function accept(pr_id) {
     },
     success: function(response) {
         
-        var instance = JSON.parse(response["rs"]);
-        alert(instance);
+        $("html").html(response);
     
     },
     failure: function(response) { 
         alert('Got an error dude');
     }
 });
+event.preventDefault();
 }
 function project_close(event,pr_id) {
 
