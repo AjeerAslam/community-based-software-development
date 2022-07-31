@@ -23,30 +23,38 @@
     <h2>MY TASKS</h2>
     <table  style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
     {%for getdata in Projects_task %} 
+    {% if forloop.counter0|divisibleby:2 %} 
     <tr>
+    
     <td>
-    <div id="b" onclick="func4(event)">
+    <div id="b" >
     <a href="" onclick="project_close(event,{{getdata.pr_id}});" id="clos"><div id="close"><div id="close1">CLOSE</div></div></a>
-    <a href="" onclick="func5(event)" id="proj"><div id="c"><div id="c1">C</div></div></a>
+    
     <a href="" onclick="func6(event)" id="prog"><div id="progress"><div id="progress1">PROGRESS</div></div></a>
     
     <a onclick="module_page(event,{{getdata.pr_id}});"><sec  id="f">{{getdata.pr_name}}</sec></a>
-    <p id="d">{{getdata.pr_description}}</p><br>
+    <input type="hidden" id="description" name="description" value="{{getdata.pr_description}}">
+    <a id="d" onclick="des()" >Desription</a><br>
     <p id="ddd">{{getdata.pr_due}}</p>
     </div>
     </td>
-    <!--
+    {% else %}
     <td>
-    <div id="b"  onclick="func4(event)">
-    <a href="" onclick="func4(event)" id="clos"><div id="close"><div id="close1">CLOSE</div></div></a>
-    <a href="" onclick="func5(event)" id="proj"><div id="c"><div id="c1">C</div></div></a>
-    <a href="" onclick="func6(event)" id="prog"><div id="progress"><div id="progress1">PROGRESS</div></div></a>
-    <sec  id="f">hlooo</sec>
-    <p id="d">hlloo</p><br>
-    <p id="ddd">hlloo</p>
-    </div>
-    </td> -->
+        <div id="b" >
+        <a href="" onclick="project_close(event,{{getdata.pr_id}});" id="clos"><div id="close"><div id="close1">CLOSE</div></div></a>
+    
+        <a href="" onclick="func6(event)" id="prog"><div id="progress"><div id="progress1">PROGRESS</div></div></a>
+        
+        <a onclick="module_page(event,{{getdata.pr_id}});"><sec  id="f">{{getdata.pr_name}}</sec></a>
+        <input type="hidden" id="description" name="description" value="{{getdata.pr_description}}">
+    <a id="d" onclick="des()" >Desription</a><br>
+        <p id="ddd">{{getdata.pr_due}}</p>
+        </div>
+        </td>
     </tr>
+    {%endif%}
+    {% empty %}
+    <h1>No works</h1>
     {% endfor %}
     </table>
 </div>

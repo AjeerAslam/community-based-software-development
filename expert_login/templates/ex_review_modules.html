@@ -8,6 +8,7 @@
     <h2>REVIEW MODULES</h2>
     <table  style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
     {%for getdata in Modules_review %}
+    {% if forloop.counter0|divisibleby:2 %} 
     <tr>
     <td>
     <div id="b" onclick="alert('div');">
@@ -16,10 +17,26 @@
     <a href="" onclick="func9(event)" id="downm"><img src="{% static '/images/Download.svg'%}" id="download1"></a>
     <a href="" onclick="approve_module({{getdata.md_id}});" id="edit"><div id="progress"><div id="progress1">APPROVE</div></div></a>
     <sec  id="f">{{getdata.md_name}}</sec>
-    <p id="d">{{getdata.md_description}}</p>
+    <input type="hidden" id="description" name="description" value="{{getdata.md_description}}">
+            <a id="d" onclick="des()" >Desription</a><br>>
     </div>
     </td>
+    {% else %}
+    <td>
+        <div id="b" onclick="alert('div');">
+        <a href="" onclick="module_suggestion(event,{{getdata.md_id}});"><div id="close"><div id="close1">SUGGESTION</div></div></a>
+        <!--<a href="" onclick="func5(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>-->
+        <a href="" onclick="func9(event)" id="downm"><img src="{% static '/images/Download.svg'%}" id="download1"></a>
+        <a href="" onclick="approve_module({{getdata.md_id}});" id="edit"><div id="progress"><div id="progress1">APPROVE</div></div></a>
+        <sec  id="f">{{getdata.md_name}}</sec>
+        <input type="hidden" id="description" name="description" value="{{getdata.md_description}}">
+            <a id="d" onclick="des()" >Desription</a><br>>
+        </div>
+        </td>
     </tr>
+    {%endif%}
+    {% empty %}
+    <h1>No works</h1>
     {% endfor %}
 
 </div>

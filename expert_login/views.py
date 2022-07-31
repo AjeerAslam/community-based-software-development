@@ -2,12 +2,12 @@ from curses.ascii import HT
 from http.client import HTTPResponse
 from django.shortcuts import render
 from django.http import HttpResponse
-from home.models import Modules
+from expert_login.models import Modules
 from home.models import Clients
 from home.models import Consists
 from django.http import JsonResponse
 from home.models import Projects
-from home.models import Experts
+from expert_login.models import Experts
 from expert_login.functions import handle_uploaded_file  #functions.py
 from expert_login.forms import module_creation_form,project_close_form,module_suggestion_form #forms.py
 from django.shortcuts import redirect
@@ -15,6 +15,7 @@ from django.db import connection
 import mimetypes
 import os
 from django.http.response import HttpResponse
+from django.contrib.auth import logout
 
 
 # Create your views here.
@@ -64,7 +65,6 @@ def ex_login_verification(request):
         username= request.POST['username']
         password = request.POST['password']
         request.session['username'] = username
-
         login_verification=Experts.objects.raw('SELECT * FROM experts WHERE ex_id=%s AND ex_password=%s',[username,password])
         request.session['name'] =login_verification[0].ex_name
         if login_verification:
@@ -72,6 +72,9 @@ def ex_login_verification(request):
             return render(request,'ex_home.html',{'Projects':projects_latest})
     
     return render(request,'expertlogin.html',{'error':"username/password error"})
+def log_out(request):
+    logout(request)
+    return redirect('ex_login')
 
 #project
 def ex_home(request):
@@ -89,6 +92,7 @@ def ex_completed(request):
 
 #project buttons
 def accept(request):
+    
     if request.method == 'GET':
         id= request.GET.get('id')
         #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
@@ -185,8 +189,14 @@ def approve_module(request):
         #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
         Modules.objects.filter(md_id=id).update(md_status='completed',md_pr_id=request.session['pr_id'])
         review_modules=Modules.objects.raw('SELECT * FROM modules WHERE md_status="review" AND md_pr_id=%s',[request.session['pr_id']])
+        #tottal=Modules.objects.raw('SELECT COUNT(%s) FROM modules ',[request.session['pr_id']])
+        tottal=Modules.objects.filter(md_pr_id=request.session['pr_id']).count()
+        no_of_completed=Modules.objects.filter(md_pr_id=request.session['pr_id'],md_status='completed').count()
+        pr_progress=(no_of_completed/tottal)*100
+        Projects.objects.filter(pr_id=request.session['pr_id']).update(pr_progress=pr_progress)
+        #review_modules=Modules.objects.raw('SELECT * FROM modules WHERE md_status="review" AND md_pr_id=%s',[request.session['pr_id']])
         return render(request,'ex_review_modules.html',{'Modules_review':review_modules,'ok':"success"})
-
+       
 def module_suggestion(request):
     if request.method == 'GET':
         print(100)
@@ -201,7 +211,7 @@ def module_suggestion(request):
         if module_suggestion.is_valid():
             md_suggestion=request.POST['md_sugg']
             md_id=request.session['md_id']
-            Modules.objects.filter(md_id=md_id).update(md_status='waiting',md_sugg=request.session['md_id'])
+            Modules.objects.filter(md_id=md_id).update(md_status='waiting',md_sugg=md_suggestion)
             #Projects.objects.raw('UPDATE projects SET pr_file=%s AND pr_closing=%s WHERE pr_id=%s AND pr_ex_id=%s',[file,close,pr_id,ex_id])
             #model_instance = student.save(commit=False)
             #model_instance.save()

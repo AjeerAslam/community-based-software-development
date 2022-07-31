@@ -15,6 +15,7 @@
     <h2>NEW MODULES</h2>
     <table  style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
     {%for getdata in Modules_new %}
+    {% if forloop.counter0|divisibleby:2 %} 
     <tr>
     <td>
     <div id="b" onclick="alert('div');">
@@ -22,10 +23,25 @@
     
     <a href="" id="u"><div id="accept"><div id="accept1">PENDING</div></div></a>
     <sec  id="f">{{getdata.md_name}}</sec>
-    <p id="d">{{getdata.md_description}}</p>
+    <input type="hidden" id="description" name="description" value="{{getdata.md_description}}">
+        <a id="d" onclick="des()" >Desription</a><br>>
     </div>
     </td>
+    {% else %}
+    <td>
+        <div id="b" onclick="alert('div');">
+        
+        
+        <a href="" id="u"><div id="accept"><div id="accept1">PENDING</div></div></a>
+        <sec  id="f">{{getdata.md_name}}</sec>
+        <input type="hidden" id="description" name="description" value="{{getdata.md_description}}">
+        <a id="d" onclick="des()" >Desription</a><br>>
+        </div>
+        </td>
     </tr>
+    {%endif%}
+    {% empty %}
+    <h1>No works</h1>
     {% endfor %}
     </table>
 </div>

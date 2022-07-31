@@ -5,7 +5,10 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
+from pickle import TRUE
 from django.db import models
+
+
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 
@@ -185,15 +188,15 @@ class Modules(models.Model):
     md_id = models.AutoField(primary_key=True)
     md_name = models.CharField(max_length=1000, blank=True, null=True)
     md_input = models.TextField(blank=True, null=True)
-    md_input_file = models.FileField()
+    md_input_file = models.FileField(blank=True, null=True)
     md_description = models.TextField(blank=True, null=True)
     md_output = models.TextField(blank=True, null=True)
-    md_output_file = models.FileField()
+    md_output_file = models.FileField(blank=True, null=True)
     md_dev_id = models.IntegerField(blank=True, null=True)
     md_status = models.CharField(max_length=50)
     md_due = models.DateField(blank=True, null=True)
     md_pr_id = models.IntegerField(blank=True, null=True)
-
+    md_sugg = models.TextField(blank=True, null=True)
     class Meta:
         managed = False
         db_table = 'modules'
@@ -211,6 +214,7 @@ class Projects(models.Model):
     pr_ex_id = models.IntegerField(blank=True, null=True)
     pr_status = models.CharField(max_length=50)
     pr_date = models.DateField()
+    pr_progress=models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False

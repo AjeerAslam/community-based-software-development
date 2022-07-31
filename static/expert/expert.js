@@ -116,6 +116,9 @@ function module_suggestion(event,md_id) {
 });
 event.preventDefault();
 } 
+function des() {
+    document.getElementById("section").innerHTML=document.getElementById("description").value;
+}
     
     
         
