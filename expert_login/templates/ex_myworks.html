@@ -1,4 +1,22 @@
 {% extends "ex_home.html" %}
+{% block nav  %}
+<a id="a22"><b>Myworks</b></a><br>
+{% endblock  %}
+{% block color %}
+    <script>
+  
+        $(document).ready(function(){
+            document.getElementById("mywork").style.filter="invert(100%)";
+            document.getElementById("review").style.filter="invert(100%)";
+            document.getElementById("a2").style.color= "white";
+        
+        
+        });
+        
+            
+    </script>
+    
+{% endblock  %}
 {% block section %}
 <div id="t2">
     <h2>{{data}}</h2>

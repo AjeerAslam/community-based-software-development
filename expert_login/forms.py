@@ -18,3 +18,12 @@ class project_close_form(forms.ModelForm):
             super(project_close_form, self).__init__(*args, **kwargs)
             for field_name, field in self.fields.items():
                 field.widget.attrs['class'] = 'form-control'
+class module_suggestion_form(forms.ModelForm):  
+    class Meta:  
+        model = Modules 
+        fields = ['md_sugg']
+ 
+    def __init__(self, *args, **kwargs):
+            super(module_suggestion_form, self).__init__(*args, **kwargs)
+            for field_name, field in self.fields.items():
+                field.widget.attrs['class'] = 'form-control'

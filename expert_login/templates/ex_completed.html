@@ -1,4 +1,22 @@
 {% extends "ex_home.html" %}
+{% block nav  %}
+<a id="a22"><b>Completed</b></a><br>
+{% endblock  %}
+{% block color %}
+    <script>
+  
+        $(document).ready(function(){
+            document.getElementById("completed").style.filter="invert(100%)";
+            document.getElementById("a4").style.color= "white";
+            document.getElementById("review").style.filter="invert(100%)";
+        
+        
+        });
+        
+            
+    </script>
+    
+{% endblock  %}
 {% block section %}
 <div id="t4">
     {%load static%}

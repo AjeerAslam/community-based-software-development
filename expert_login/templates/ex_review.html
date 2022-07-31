@@ -1,4 +1,21 @@
 {% extends "ex_home.html" %}
+{% block nav  %}
+<a id="a22"><b>Review</b></a><br>
+{% endblock  %}
+{% block color %}
+    <script>
+  
+        $(document).ready(function(){
+            document.getElementById("review").style.filter="invert(0%)";
+            document.getElementById("a3").style.color= "white";
+        
+        
+        });
+        
+            
+    </script>
+    
+{% endblock  %}
 {% block section %}
 <div id="t3" >
     {%load static%}
@@ -10,7 +27,7 @@
     <div id="b" onclick="alert('div');">
     <a href="" onclick="func7(event)" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
     <a href="" onclick="func8(event)" id="clie"><div id="c"><div id="c1">C</div></div></a>
-    <a href="" onclick="project_download(event,{{getdata.pr_id}});" id="down"><div id="download"><img src="{% static '/images/Download.svg' %}" i" id="download1"></div></a>
+    <a href="" onclick="project_download(event,{{getdata.pr_id}});" id="down"><div id="download"><img src="{% static '/images/Download.svg' %}"  id="download1"></div></a>
     
     <sec  id="f">{{getdata.pr_name}}</sec>
     <p id="d">{{getdata.pr_description}}</p><br>

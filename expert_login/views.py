@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from home.models import Projects
 from home.models import Experts
 from expert_login.functions import handle_uploaded_file  #functions.py
-from expert_login.forms import module_creation_form,project_close_form #forms.py
+from expert_login.forms import module_creation_form,project_close_form,module_suggestion_form #forms.py
 from django.shortcuts import redirect
 from django.db import connection
 import mimetypes
@@ -40,24 +40,7 @@ def load(request):
         return JsonResponse({"rs": success})'''
 '''def module_page(request):
     return render(request,'module_page.html')'''
-def module_creation(request):  
-    if 'module_creation_button' in request.POST:  
-        module = module_creation_form(request.POST, request.FILES)
-         
-        if module.is_valid():
-            #module.pr_ex_id=request.session['pr_id']
-            #module.md_staus='new'
-            handle_uploaded_file(request.FILES['md_input_file']) 
-            handle_uploaded_file(request.FILES['md_output_file']) 
-            md=module.save() 
-            Modules.objects.filter(md_id=md.md_id).update(md_status='new',md_pr_id=request.session['pr_id'])
-            #Modules.objects.raw('UPDATE modules SET md_output="new" WHERE md_id=id',[md.md_id])
-            #model_instance = student.save(commit=False)
-            #model_instance.save()
-            return redirect('/ex_new_modules/')  
-    else:  
-        module = module_creation_form()  
-        return render(request,"module_creation.html",{'form':module})
+
 '''def file(request):
       
     return render(request,'file.html')
@@ -73,7 +56,6 @@ def file_upload(request):
 
 #login
 def ex_login(request):
-    download_file(request)
     return render(request,'expertlogin.html')
 def ex_login_verification(request):
     #client_table=Clients.objects.raw('SELECT *,cl_id AS age FROM clients')
@@ -82,7 +64,9 @@ def ex_login_verification(request):
         username= request.POST['username']
         password = request.POST['password']
         request.session['username'] = username
+
         login_verification=Experts.objects.raw('SELECT * FROM experts WHERE ex_id=%s AND ex_password=%s',[username,password])
+        request.session['name'] =login_verification[0].ex_name
         if login_verification:
             projects_latest=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="new"')
             return render(request,'ex_home.html',{'Projects':projects_latest})
@@ -137,7 +121,6 @@ def ex_new_modules(request):
     if 'id' in request.GET:
         request.session['pr_id']= request.GET.get('id')
     new_modules=Modules.objects.raw('SELECT * FROM modules WHERE md_status="new" AND md_pr_id=%s',[request.session['pr_id']])
-    print(new_modules[0].md_name)
     return render(request,'ex_new_modules.html',{'Modules_new':new_modules})
 def ex_manage_modules(request):
     manage_modules=Modules.objects.raw('SELECT * FROM modules WHERE md_status="waiting" AND md_pr_id=%s',[request.session['pr_id']])
@@ -178,6 +161,52 @@ def download_request(request):
         request.session['file_name']= projects_download[0].pr_file
         print(request.session['file_name'])
         return render(request,'download.html')
+def module_creation(request):  
+    if 'module_creation_button' in request.POST:  
+        module = module_creation_form(request.POST, request.FILES)
+         
+        if module.is_valid():
+            #module.pr_ex_id=request.session['pr_id']
+            #module.md_staus='new'
+            handle_uploaded_file(request.FILES['md_input_file']) 
+            handle_uploaded_file(request.FILES['md_output_file']) 
+            md=module.save() 
+            Modules.objects.filter(md_id=md.md_id).update(md_status='new',md_pr_id=request.session['pr_id'])
+            #Modules.objects.raw('UPDATE modules SET md_output="new" WHERE md_id=id',[md.md_id])
+            #model_instance = student.save(commit=False)
+            #model_instance.save()
+            return redirect('/ex_new_modules/')  
+    else:  
+        module = module_creation_form()  
+        return render(request,"module_creation.html",{'form':module})
+def approve_module(request):
+    if request.method == 'GET':
+        id= request.GET.get('id')
+        #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
+        Modules.objects.filter(md_id=id).update(md_status='completed',md_pr_id=request.session['pr_id'])
+        review_modules=Modules.objects.raw('SELECT * FROM modules WHERE md_status="review" AND md_pr_id=%s',[request.session['pr_id']])
+        return render(request,'ex_review_modules.html',{'Modules_review':review_modules,'ok':"success"})
+
+def module_suggestion(request):
+    if request.method == 'GET':
+        print(100)
+        request.session['md_id']= request.GET.get('id')
+        print(request.session['md_id'])
+        #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
+        #Projects.objects.filter(pr_id=id).update(pr_status='waiting')
+        module_suggestion = module_suggestion_form()  
+        return render(request,'module_suggestion_form.html',{'form':module_suggestion})
+    if 'project_close' in request.POST:  
+        module_suggestion = module_suggestion_form(request.POST)
+        if module_suggestion.is_valid():
+            md_suggestion=request.POST['md_sugg']
+            md_id=request.session['md_id']
+            Modules.objects.filter(md_id=md_id).update(md_status='waiting',md_sugg=request.session['md_id'])
+            #Projects.objects.raw('UPDATE projects SET pr_file=%s AND pr_closing=%s WHERE pr_id=%s AND pr_ex_id=%s',[file,close,pr_id,ex_id])
+            #model_instance = student.save(commit=False)
+            #model_instance.save()
+            return redirect('/ex_manage_modules/')
+
 
 
             

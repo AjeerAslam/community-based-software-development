@@ -17,7 +17,7 @@ function accept(pr_id) {
         alert('Got an error dude');
     }
 });
-event.preventDefault();
+preventDefault();
 }
 function project_close(event,pr_id) {
 
@@ -66,6 +66,46 @@ function project_download(event,pr_id) {
     type: 'GET',
     data:{
         'id':pr_id
+    },
+    success: function(response) {
+        $("html").html(response);
+    },
+    failure: function(response) { 
+        alert('Got an error dude');
+    }
+});
+event.preventDefault();
+} 
+function approve_module(pr_id) {
+
+    alert(pr_id);
+  
+   $.ajax({
+    url: '/approve_module/',
+    type: 'GET',// This is the default though, you don't actually need to always mention it
+    data:{
+        'id':pr_id
+    },
+    success: function(response) {
+        
+        $("html").html(response);
+    
+    },
+    failure: function(response) { 
+        alert('Got an error dude');
+    }
+});
+preventDefault();
+}
+function module_suggestion(event,md_id) {
+
+    alert(md_id);
+  
+   $.ajax({
+    url: '/module_suggestion/',
+    type: 'GET',
+    data:{
+        'id':md_id
     },
     success: function(response) {
         $("html").html(response);

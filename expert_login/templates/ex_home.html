@@ -5,9 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static '/expert/expert.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script></script>
+    {% block color %}
+    <script>
+  
+        $(document).ready(function(){
+            document.getElementById("home").style.filter="invert(100%)";
+            document.getElementById("review").style.filter="invert(100%)";
+            document.getElementById("a1").style.color= "white";
+        
+        
+        });
+        
+            
+    </script>
     
-    
-    
+    {% endblock  %}
     </head>
     
     <body>
@@ -17,12 +30,13 @@
     <div id="header">
     <a id="a11"><b>Dashboard</b></a><br>
     <img src="{% static '/images/arrow.svg'%}">
-    <a id="a22"><b>Review</b></a><br>
-    {% block header %}
-      
+    {% block nav  %}
+    <a id="a22"><b>Home</b></a><br>
     {% endblock  %}
-    <div id="a33">Welcome user</div><br>
-    <a id=a44><div id=d1><span>N</span></div></a><br>
+    
+    <div id="a33">welcome {{ request.session.name }}</div><br>
+
+    <!--<a id=a44><div id=d1><span>N</span></div></a><br>-->
     <a id=a55><img src="{% static '/images/Logout.svg'%}"></a><br>
     </div>
     <div id="nav">
@@ -52,10 +66,10 @@
     {%for getdata in Projects %}
     
     <tr>
-    <td>
-    <div id="b" onclick="alert('div');">
-    <a href="" onclick="accept({{getdata.pr_id}});" id="u"><div id="accept"><div id="accept1">ACCEPT</div></div></a>
+    <td><a href="" onclick="accept({{getdata.pr_id}});" id="u"><div id="accept"><div id="accept1">ACCEPT</div></div></a>
     <a href="" onclick="func5(event)" id="proj"><div id="c"><div id="c1">C</div></div></a>
+    <div id="b" onclick="alert('div');">
+    
     
     <sec  id="f">{{getdata.pr_name}}</sec>
     <p id="d">{{getdata.pr_description}}</p><br>
@@ -85,6 +99,7 @@
 </div>
 {% endblock section %}
 </div>
-<script src="{% static '/expert/expert.js' %}"></script>
+<script src="{% static '/expert/expert.js' %}">
+</script>
 </body>
 </html>

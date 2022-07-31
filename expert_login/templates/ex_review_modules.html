@@ -11,10 +11,10 @@
     <tr>
     <td>
     <div id="b" onclick="alert('div');">
-    <a href="" onclick="func3(event);" id="suggestion"><div id="close"><div id="close1">SUGGESTION</div></div></a>
-    <a href="" onclick="func5(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>
+    <a href="" onclick="module_suggestion(event,{{getdata.md_id}});"><div id="close"><div id="close1">SUGGESTION</div></div></a>
+    <!--<a href="" onclick="func5(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>-->
     <a href="" onclick="func9(event)" id="downm"><img src="{% static '/images/Download.svg'%}" id="download1"></a>
-    <a href="" onclick="func6(event)" id="edit"><div id="progress"><div id="progress1">ACCEPT</div></div></a>
+    <a href="" onclick="approve_module({{getdata.md_id}});" id="edit"><div id="progress"><div id="progress1">APPROVE</div></div></a>
     <sec  id="f">{{getdata.md_name}}</sec>
     <p id="d">{{getdata.md_description}}</p>
     </div>
