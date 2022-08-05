@@ -77,7 +77,8 @@
             <div id="detail">
                 <!--<a href="{% url 'expert:module_creation' %}">now</a>-->
                 
-                <form  action='/expert_login/' method="POST">
+                <!--<form  action='/expert_login/' method="POST">-->
+                    <form  action="{% url 'expert:expert_login' %}" method="POST">
                     {% csrf_token %}
                 
                 

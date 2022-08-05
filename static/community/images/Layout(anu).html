@@ -1,0 +1,301 @@
+<doctype html>
+<head>
+<title>software devolepment</title>
+<style>
+#dashboard{
+position: absolute;
+width: 235px;
+height: 98px;
+left: 0px;
+top: 0px;
+background: #3C59F0;
+box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#dashboard img{
+position: absolute;
+width: 84px;
+height: 90px;
+left: 151px;
+top: 9px;
+}
+#header{
+box-sizing: border-box;
+
+position: absolute;
+width: 1284px;
+height: 99px;
+left: 235px;
+top: 0px;
+
+background: #3C59F0;
+border: 1px solid #000000;
+}
+#nav{
+position: absolute;
+width: 237px;
+height: 925px;
+left: -2px;
+top: 99px;
+overflow-y: hidden;
+background: #3C59F0;
+box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#section{
+position: absolute;
+width: 1284px;
+height: 923px;
+left: 235px;
+top: 99px;
+overflow-y: hidden;
+background: #4CF231;
+}
+
+#n1 {
+position: absolute;
+left: 26px;
+top: 30px;
+
+
+}
+#n2{
+position: absolute;
+left: 20px;
+top: 113px;
+}
+#n3{
+position: absolute;
+left: 11px;
+top: 202px;
+}
+#n4{
+position: absolute;
+left: 16px;
+top: 297px;
+}
+#a11{
+position: absolute;
+width: 139px;
+height: 56px;
+left: 50px;
+top: 40px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 29px;
+
+color: #100F0F;
+}
+#a22{
+position: absolute;
+width: 108px;
+height: 56px;
+left: 200px;
+top: 40px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 29px;
+
+color: #FFADAD;
+}
+#a33{
+position: absolute;
+width: 340px;
+height: 42px;
+left: 900px;
+top: 45px;
+
+font-family: 'Inria Serif';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+#a55{
+position: absolute;
+width: 91px;
+height: 53px;
+left: 1050px;
+top: 1px;
+}
+
+
+#header img{
+position: absolute;
+width: 59px;
+height: 48px;
+left: 154px;
+top: 30px;
+}
+#n1 a{
+position: relative;
+top: -6;
+left: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 29px;
+
+color: #292020;
+}
+#n2 a{
+position: relative;
+top: -12px;
+left: 25px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 29px;
+
+color: #292020;
+}
+#n3 a{
+position: relative;
+top:-9 ;
+left: 17px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 29px;
+
+color: #292020;
+}
+#n4 a{
+position: relative;
+top: -10;
+left: 20px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 29px;
+
+color: #292020;
+}
+#d1{
+position: absolute;
+width: 68px;
+height: 57px;
+left: 1140px;
+top: 21px;
+
+background: #41242F;
+border-radius: 8px;
+}
+#a44 span{
+position: relative;
+width: 104px;
+height: 52px;
+top: 5px;
+left: 20px;
+
+font-family: 'Inria Serif';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 48px;
+text-align: center;
+
+color: #FFFBFB;
+
+
+}
+</style>
+</head>
+<body>
+<div id="dashboard">
+<img src="List.svg">	
+</div>	
+<div id="header">
+<a id=a11><b>Dashboard</b></a><br>
+<img src="arrow.svg">
+<a id=a22><b>Review</b></a><br>
+<a id=a33>Welcome user</a><br>
+<a id=a44><div id=d1><span>N</span></div></a><br>
+<a id=a55><img src="Logout.svg"></a><br>
+</div>
+<div id="nav">
+<div id=n1>
+<img src="Vector.svg" ><a id=a1><b>Home</b></a>
+</div>
+<div id=n2>
+<img src="Maintenance.svg"><a id=a2><b>My Works</b></a>
+</div>
+<div id=n3>
+<img src="View.svg" ><a id=a3><b>Review</b></a>
+</div>
+<div id=n4>
+<img src="Audit.svg"><a id=a4><b>Completed</b></a>
+</div>
+</div>
+<div id="section">
+
+</div>
+<script>
+
+function click()
+{
+document.getElementById('section').innerHTML = 'red';
+}
+document.getElementById("a1").addEventListener("click",click);
+
+function click1()
+{
+document.getElementById('section').innerHTML = 'green';
+}
+document.getElementById("a2").addEventListener("click",click1);
+
+function click2()
+{
+document.getElementById('section').innerHTML = 'yellow';
+}
+document.getElementById("a3").addEventListener("click",click2);
+function click3()
+{
+document.getElementById('section').innerHTML = 'orange';
+}
+document.getElementById("a4").addEventListener("click",click3);
+function click4()
+{
+document.getElementById('section').innerHTML = 'violet';
+}
+document.getElementById("a11").addEventListener("click",click4);
+function click5()
+{
+document.getElementById('section').innerHTML = 'black';
+}
+document.getElementById("a22").addEventListener("click",click5);
+
+
+function click6()
+{
+document.getElementById('section').innerHTML = 'puple';
+}
+document.getElementById("a33").addEventListener("click",click6);
+function click7()
+{
+document.getElementById('section').innerHTML = 'pink';
+}
+document.getElementById("a44").addEventListener("click",click7);
+function click8()
+{
+document.getElementById('section').innerHTML = 'lavender';
+}
+document.getElementById("a55").addEventListener("click",click8);
+</script>
+</body>

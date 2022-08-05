@@ -1,0 +1,95 @@
+{% load static %}
+<doctype html>
+    <head>
+    <title>community login</title>
+    <style>
+    #log{
+        position: absolute;
+        width: 499px;
+        height: 750px;
+        left: -65px;
+        top: -1px;
+    }
+    #logcen{
+        position: absolute;
+        width: 75%;
+        height: 550px;
+        z-index: -1;
+        left: 370px;
+        top: 90px;
+    }
+    
+    #top{
+        position: absolute;
+        width: 600px;
+        height: 100px;
+        left: 850px;
+        top: 1px;
+        font-size: larger;
+        font-family: 'Fondamento';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 55px;
+        text-decoration-line: underline;
+
+        color: #000000;
+        }
+    #detail{
+        position: relative;
+        left:800px;
+        top:250px
+    }
+    #center{
+        width: 40%;
+        height: 550px;
+        
+        left: 370px;
+        top: 90px;
+
+    }
+    #b1{
+        position: fixed;
+        background: #97baef;
+        width: 100px;
+        height: 40px;
+        left: 800px;
+        top: 420px;
+    }
+    #b2{
+        position: fixed;
+        background: #97baef;
+    
+        width: 100px;
+        height: 40px;
+        left: 1000px;
+        top: 420px;
+    }
+    </style>
+    </head>
+    <body>
+        <img id="log" src="{% static '/images/loginimg.svg'%}">
+        <div id="top">
+            <p>LOGIN TO YOUR ACCOUNT</p>
+        </div> 
+        <div id="center">   
+            <img id="logcen" src="{% static '/images/logincenter.svg'%}">
+            <div id="detail">
+                <form name="login">
+                 <label style="font-size:x-large">USERNAME</label><br>
+                 <input type="text" id="uname" size="40px">
+                 <br> <br>
+                 <label style="font-size:x-large">PASSWORD</label><br>
+                 <input type="password" id="pass" size="40px">
+                 <br><br>
+                 <input type="submit" name="LOGIN" value="LOGIN"  id="b1">
+                 <button type="submit" formaction="{% url 'sign' %}" id="b2">REGISTER</button>
+                 
+                </form>    
+            </div>    
+        </div>    
+    </body>
+</html>        
+
+
+
+   

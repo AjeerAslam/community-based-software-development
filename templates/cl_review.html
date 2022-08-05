@@ -1,0 +1,47 @@
+{% extends 'client_progress.html' %}
+{% load static %}
+{% block navi %}
+<a id="a22"><b>Review</b></a><br>
+{% endblock%}
+
+{% block color %}
+<script>
+  
+    $(document).ready(function(){
+        document.getElementById("a3").style.color= "white";
+        console.log('hello');   
+    
+    });
+    
+        
+</script>
+{%endblock%}
+{% block section %}
+<table  id="t3" style="position: relative;left: -10px;top: -40px;border-spacing:60px;">
+    
+{%for getdata in Projects_review %} 
+{% if forloop.counter0|divisibleby:2 %}
+<tr>
+<td>
+<div id="b">
+<a id="re" onclick="download({{getdata.pr_id}})"><button id="download" name="download">Download</button></a>
+<a id="acc" onclick="accept({{getdata.pr_id}})"><button id="accept" name="accept">Accept</button></a>
+<!--<a href="" onclick="func3(event)" id="dwn"><div id="c"><div id="c1"><img src="{% static '/images/Group 74.svg'%}"></div></div></a>-->
+
+
+
+<sec  id="f">{{getdata.pr_name}}</sec>
+<p id="d">{{getdata.pr_description}}</p>
+<p id="ddd">{{getdata.pr_due}}</p>
+</div>
+</td>
+
+{% endif %}
+{% empty %}
+    <h1>No works</h1>
+{% endfor %} 
+</table>
+
+{% endblock %}
+ 
+

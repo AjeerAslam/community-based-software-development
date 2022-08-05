@@ -3,10 +3,10 @@ from http.client import HTTPResponse
 from django.shortcuts import render
 from django.http import HttpResponse
 from expert_login.models import Modules
-from home.models import Clients
-from home.models import Consists
+from expert_login.models import Clients
+from expert_login.models import Consists
 from django.http import JsonResponse
-from home.models import Projects
+from expert_login.models import Projects
 from expert_login.models import Experts
 from expert_login.functions import handle_uploaded_file  #functions.py
 from expert_login.forms import module_creation_form,project_close_form,module_suggestion_form #forms.py
@@ -66,8 +66,9 @@ def ex_login_verification(request):
         password = request.POST['password']
         request.session['username'] = username
         login_verification=Experts.objects.raw('SELECT * FROM experts WHERE ex_id=%s AND ex_password=%s',[username,password])
-        request.session['name'] =login_verification[0].ex_name
+        
         if login_verification:
+            request.session['name'] =login_verification[0].ex_name
             projects_latest=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="new"')
             return render(request,'ex_home.html',{'Projects':projects_latest})
     

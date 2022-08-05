@@ -1,0 +1,119 @@
+{%load static%}
+<doctype html>
+    <head>
+    <title>community login</title>
+    <style>
+    #log{
+        position: absolute;
+        width: 499px;
+        height: 750px;
+        left: -65px;
+        top: -1px;
+    }
+    #logcen{
+        position: absolute;
+        width: 75%;
+        height: 550px;
+        z-index: -1;
+        left: 370px;
+        top: 90px;
+    }
+    
+    #top{
+        position: absolute;
+        width: 600px;
+        height: 100px;
+        left: 850px;
+        top: 1px;
+        font-size: larger;
+        font-family: 'Fondamento';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 55px;
+        text-decoration-line: underline;
+
+        color: #000000;
+        }
+    #detail{
+        position: relative;
+        left:800px;
+        top:250px
+    }
+    #center{
+        width: 40%;
+        height: 550px;
+        
+        left: 370px;
+        top: 90px;
+
+    }
+    #b1{
+        position: fixed;
+        background: #97baef;
+        width: 100px;
+        height: 40px;
+        left: 800px;
+        top: 420px;
+    }
+     #b2{
+        position: relative;
+        background: #1a6eec;
+        width: 100px;
+        height: 40px;
+        left: 200px;
+        top: 60px;
+    }
+   
+    
+    </style>
+    </head>
+    <body>
+        <img id="log" src="{%static '/community/images/loginimg.svg'%}">
+        <div id="top">
+            <p>LOGIN TO YOUR ACCOUNT</p>
+        </div> 
+        <div id="center">   
+            <img id="logcen" src="{%static '/community/images/logincenter.svg'%}">
+            <div id="detail">
+                <!--<form name="login" action='/cm_home/' method="POST">-->
+                    <form name="login" action="{% url 'community:cm_home' %}" method="POST">
+
+                    {% csrf_token %}
+                    
+                    {%if messages %}
+          <div class="alert alert-danger"><br>
+          {%for msg in messages %}
+          <b class="text-danger">{{msg}}</b>
+          {%endfor %}
+        </div>
+          {%endif %}
+          {%if error1 %}
+          <div class="alert alert-danger"><br>
+          
+          <b class="text-danger">{{error1}}</b>
+          
+        </div>
+          {%endif %}
+          
+       
+                    <label style="font-size:x-large">EMAIL</label><br>
+                    <input type="email" id="uname" name="username" size="40px">
+                    <br> <br>
+                    <label style="font-size:x-large">PASSWORD</label><br>
+                    <input type="password" id="pass" name="password" size="40px">
+                    <br>
+            
+                    <input type="submit" name="LOGIN" value="LOGIN" id="b1" > <br><span id="error"></span> 
+                    
+                     
+                   </form>  
+                   <a href='/cosignup/' id="b2">SIGN UP</button><span id="error"></span>  
+
+            </div>    
+        </div>    
+    </body>
+</html>        
+
+
+
+   

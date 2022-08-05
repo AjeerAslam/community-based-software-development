@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>module</title>
+  <style>
+  #h{
+    text-align: center;
+  }
+
+  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script language="javascript">
+    function popup()
+    {
+     window.alert("CREATED SUCCESSFULLY!");
+     /*<?PHP
+      header('Location: showworks.php');
+     ?>*/
+    }
+  </script>
+</head>
+<body>
+    <div class="container">
+      <h2 id="h">ADD OR CREATE MODULES</h2>
+      <form action="clientreg.php" method='post' onsubmit="popup()" id="myform">
+        <div class="form-group">
+          <label> MODULE NAME:</label>
+          <input type="text" class="form-control" name="Name">
+        </div>
+        <div class="form-group">
+          <label>INPUTS:</label>
+          <input type="text" class="form-control" id="email" name="in">
+        </div>
+        <div class="form-group">
+          <label>DESCRIPTION:</label>
+          <input type="text" class="form-control"  name="desc">
+        </div>
+        <div class="form-group">
+        <label>OUTPUTS:</label>
+        <input type="text" class="form-control"  name="out">
+        </div>
+        <div class="form-group">
+          <label>DEADLINE:</label>
+          <input type="date" class="form-control"  name="dead">
+        </div>
+        
+        
+       <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="PUBLISH" value="PUBLISH" class="btn btn-default">
+        
+      </form>
+    </div>
+    
+    </body>
+</html>  

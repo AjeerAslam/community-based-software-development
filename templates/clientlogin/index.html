@@ -1,0 +1,257 @@
+
+{%load static%}
+
+{%if request.session.Email%}
+<doctype html>
+<head>
+<title>software devolepment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="{% static '/community/communitystyle.css' %}">
+</head>
+
+<body id="body" onload="click77();" >
+
+
+<div id="dashboard">
+<img src="{%static '/community/images/List.svg' %}">	
+</div>	
+<div id="header">
+<a id=a11><b>Dashboard</b></a><br>
+<img src="{%static '/community/images/arrow.svg' %}">
+<a id=a22><b>Review</b></a><br>
+<div id=a33>Welcome {{request.session.Email}}</div><br>
+<a id=a44><div id=d1><span>N</span></div></a><br>
+<a id=a55 href="{% url 'logout' %}"><img src="{%static '/community/images/Logout.svg' %}"></a><br>
+</div>
+<div id="nav">
+<div id=n1>
+<img src="{%static '/community/images/Vector.svg'%}" id='home' ><a id=a1><b>Home</b></a>
+</div>
+<div id=n2>
+<img src="{%static '/community/images/Maintenance.svg'%}" id='mywork'><a id=a2><b>My Works</b></a>
+</div>
+<div id=n3>
+<img src="{%static '/community/images/View1.svg'%}" id='review'><a id=a3><b>Review</b></a>
+</div>
+<div id=n4>
+<img src="{%static '/community/images/Audit.svg'%}" id='completed'><a id=a4><b>Completed</b></a>
+</div>
+
+</div>
+<div id="section">
+
+<div id="t1">
+    <h2 align="center">MY WORKS</h2>
+
+<table   style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
+
+{%for getdata in Modules  %}
+
+{% if forloop.counter0|divisibleby:2 %} 
+<tr>
+
+
+<td>
+<div id="b" onclick="alert('div');">
+<form id="myform1" name="myform1" method="post" >
+<a href="" onclick="accept({{getdata.md_id}})" id="accept" name="acceptk[]" value="" class="accept1" ><img src="{%static '/community/images/accept.svg'%}"></a>
+<a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
+</form>
+
+<sec  id="f">{{getdata.md_name}}</sec>
+<p id="d">{{getdata.md_description}}</p>
+</div>
+</td>
+
+{% else %}
+
+<td>
+<div id="b"  onclick="alert('div');">
+<form id="myform1" name="myform1">
+<a href="" onclick="accept({{getdata.md_id}})" id="accept" name="acceptk[]" value="" class="accept1" ><img src="{%static '/community/images/accept.svg'%}"></a>
+<a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
+</form>
+
+
+<sec  id="f">{{getdata.md_name}}<</sec>
+<p id="d">{{getdata.md_description}}</p>
+</div>
+</td>
+
+</tr>
+{% endif %}
+
+{% empty %}
+    <h1>No works</h1>
+
+{% endfor %}
+
+</table>
+</div>
+
+<div id="t2">
+<h2>MY TASKS</h2>
+<table  style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
+{%for getdata in  module_waiting %}
+
+{% if forloop.counter0|divisibleby:2 %} 
+<tr>
+<td>
+<div id="b" onclick="alert('div');">
+<a href="" onclick="func1(event)" id="u"><img src="{%static '/community/images/Group 12.svg'%}"></a>
+<a href="" onclick="func2(event)" id="p"><img src="{%static '/community/images/Group 73.svg'%}"></a>
+
+<a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
+
+<sec  id="f">{{getdata.md_name}}</sec>
+<p id="d">{{getdata.md_description}}</p>
+</div>
+</td>
+
+{% else %}
+
+<td>
+<div id="b"  onclick="alert('div');">
+    <a href="" onclick="func1(event)" id="u"><img src="{%static '/community/images/Group 12.svg'%}"></a>
+    <a href="" onclick="func2(event)" id="p"><img src="{%static '/community/images/Group 73.svg'%}"></a>
+    
+    <a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
+<sec  id="f">{{getdata.md_name}}</sec>
+<p id="d">{{getdata.md_description}}</p>
+</div>
+</td>
+
+</tr>
+{% endif %}
+{% empty %}
+    <h6>No works</h6>
+
+
+{% endfor %}
+   
+</table>
+</div>
+
+
+<div id="t3" >
+<h2>WORKS UNDER REVIEW</h2>
+<table   style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
+{%for getdata in  module_review %}
+
+{% if forloop.counter0|divisibleby:2 %}
+
+<tr>
+<td>
+<div id="b" onclick="alert('div');">
+<a href="" onclick="func5(event)" id="pending" class="accept1"><img src="{%static '/community/images/pending.svg'%}"></a>
+
+<a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
+
+<sec  id="f">{{getdata.md_name}}</sec>
+<p id="d">{{getdata.md_description}}</p>
+</div>
+</td>
+
+{% else %}
+<td>
+<div id="b"  onclick="alert('div');">
+<a href="" onclick="func1(event)" id="pending" class="accept1"><img src="{%static '/community/images/pending.svg'%}"></a>
+<a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
+<sec  id="f">{{getdata.md_name}}</sec>
+<p id="d">{{getdata.md_description}}</p>
+</div>
+</td>
+    
+</tr>
+{% endif %}
+{% empty %}
+    <h1>No works</h1>
+
+{% endfor %}
+   
+
+</table>
+</div>
+
+
+
+
+<div id="t4">
+<H2>COMPLETED WORKS</H2>
+<table   style="position: relative;left: -30px;top: -40px;border-spacing:60px;">
+
+
+
+ 
+{%for getdata in  module_completed %}
+{% if forloop.counter0|divisibleby:2 %}
+<tr>
+<td>
+<div id="b" onclick="alert('div');">
+
+<a href="" onclick="func6(event)" id="view" class="accept1"><img src="{%static '/community/images/view22.svg'%}"></a>
+<a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
+
+<sec  id="f">{{getdata.md_name}}</sec>
+<p id="d">{{getdata.md_description}}</p>
+</div>
+</td>
+{% else %}
+<td>
+<div id="b"  onclick="alert('div');">
+<a href="" onclick="func6(event)" id="view" class="accept1"><img src="{%static '/community/images/view22.svg'%}"></a>
+<a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
+<sec  id="f">{{getdata.md_name}}</sec>
+<p id="d">{{getdata.md_description}}</p>
+</div>
+</td>
+</tr>
+{% endif %}
+
+{% empty %}
+    <h1>No works</h1>
+{% endfor %}
+</table>
+</div>
+
+<div id="section1">
+    <h2 id="flh">files</h2>
+    <div id="b3" onclick="alert('div');">
+    <p id="d">file.py</p>
+    <div id="b4" onclick="alert('div');">
+    <a href="" onclick="func6(event)" id="dw1">BROWSE</a>
+    </div>
+    <div id="b5" onclick="alert('div');">
+    <a href="" onclick="func6(event)" id="dw2">UPLOAD</a>
+    </div>
+    </div>
+    
+    
+    <table style="border-spacing:30px;">
+    
+    
+    
+    <tr>
+    <td>
+    <div id="b1" onclick="alert('div');">
+    <p id="d">Description</p>
+    <div id="b2" onclick="alert('div');">
+    <a href="" onclick="func4(event)" id="file">file.py</a>
+    <a href="" onclick="func6(event)" id="dw">DOWNLOAD</a>
+    </div>
+    </div>
+    </td>
+    </tr>
+ 
+    </table>
+    </div>
+
+</div>
+</body>
+<script src="{% static '/community/community.js' %}">
+
+</script>
+</html>
+{%endif%}

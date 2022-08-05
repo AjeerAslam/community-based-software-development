@@ -1,0 +1,114 @@
+
+{% load static %}
+<doctype html>
+    <head>
+    <title>client login</title>
+    <style>
+    #log{
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        left: 40px;
+        top: 0px;
+        z-index: -1;
+    }
+    #bg1{
+        position: absolute;
+        width: 100%;
+        height: 98%;
+       
+    }
+    #detail{
+        position: absolute;
+        left:600px;
+        top:260px
+    }
+    #p1{
+        position: absolute;
+        width: 1000px;
+        height: 250px;
+        left: 320px;
+        top: 0px;
+        font-size: 30px;
+    }
+    #b1{
+        position: relative;
+        background: #1a6eec;
+        width: 100px;
+        height: 40px;
+        left: 10px;
+        top: 40px;
+    }
+    #b2{
+        position: relative;
+        background: #1a6eec;
+        width: 100px;
+        height: 40px;
+        left: 100px;
+        top: 40px;
+    }
+    #side{
+        left:40px; 
+       
+        
+    }
+    #b3{
+        position: relative;
+        background: #1a6eec;
+        width: 200px;
+        height: 100px;
+        top: 200px;
+        left: 25px;
+        font-size: 15px;
+    }
+    #b4{
+        position: absolute;
+        background: #1a6eec;
+        width: 200px;
+        height: 100px;
+        top: 400px;
+        left: 25px;
+        font-size: 15px;
+    }
+    #error{
+        color:red;
+
+    }
+    </style>
+    </head>
+    <body>
+        <div id="bg">
+            <img id="bg1" src="{% static '/images/bg.svg'%}">
+        </div>    
+        <div id="top">
+            <img id="log" src="{% static '/images/logo.svg'%}">
+            <p id="p1"><u> TO SUBMIT YOUR SOFTWARE REQUIREMENTS LOGIN WITH US</u></p>
+            <div id="detail">
+                <form name="login" method="POST"> {% csrf_token %}
+                 <label style="font-size:x-large" >USERNAME</label><br>
+                 <input type="text" id="uname" size="40px" name="username">
+                 <br> <br>
+                 <label style="font-size:x-large">PASSWORD</label><br>
+                 <input type="password" id="pass" size="40px" name="password">
+                 <br><br>
+                 <button type="submit" formaction='/login/' id="b1" name="cl_login">LOGIN</button>
+                 
+                 <button type="submit" formaction="{% url 'sign' %}" id="b2">SIGN UP</button><span id="error"></span>
+                     
+                </form>    
+            </div>
+        </div> 
+           
+        <div id="side"> 
+           <a href='/community/' > <button id="b3" type="submit"><b>JOIN WITH OUR DEVELOPER COMMUNITY</b></button></a>
+           <a href='/expert/' > <button id="b4" type="submit"><b>EXPERT TEAM</b></button></a>
+        </div> 
+        <script>
+            document.getElementById("error").innerHTML="{{error}}";
+        </script>    
+    </body>
+</html>        
+
+
+
+   

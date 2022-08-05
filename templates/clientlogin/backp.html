@@ -1,0 +1,75 @@
+{% extends "clientlogin/base.html" %}
+{% load static %} 
+{% block header %}
+<a id=a22><b>MyWork</b></a><br>
+{% endblock header %}
+{% block color %}
+<script>
+  
+    $(document).ready(function(){
+        document.getElementById("mywork").style.filter="invert(100%)";
+        document.getElementById("a2").style.color= "white";
+        console.log('hello');
+
+    
+    
+    });
+    
+        
+    </script>    
+{% endblock  %}
+
+{% block section %}
+<div id="t2">
+    <h2 align="center">MY TASKS</h2>
+    <table class="md">
+    {%for getdata in  module_waiting %}
+    
+    {% if forloop.counter0|divisibleby:2 %} 
+    <tr>
+    <td>
+
+    <div id="b">
+    
+      
+        <a href="" onclick="update({{getdata.md_id}})" id="u"><img src="{%static '/community/images/Group 12.svg'%}"></a>
+   
+    <a href="" onclick="func2(event)" id="p"><img src="{%static '/community/images/Group 73.svg'%}"></a>
+    
+    <a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
+    
+    <sec  id="f">{{getdata.md_name}}</sec>
+    <p id="d">{{getdata.md_description}}</p>
+    </div>
+    </td>
+    
+    {% else %}
+    
+    <td>
+    <div id="b"  onclick="alert('div');">
+       
+            {% csrf_token %}
+        <a href="" onclick="update({{getdata.md_id}})" id="u"><img src="{%static '/community/images/Group 12.svg'%}"></a>
+
+   
+        <a href="" onclick="func2(event)" id="p"><img src="{%static '/community/images/Group 73.svg'%}"></a>
+        
+        <a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
+
+    <sec  id="f">{{getdata.md_name}}</sec>
+    <p id="d">{{getdata.md_description}}</p>
+    </div>
+    </td>
+    
+    </tr>
+    {% endif %}
+    {% empty %}
+        <h6>No works</h6>
+    
+    
+    {% endfor %}
+       
+    </table>
+    </div>
+    
+{% endblock section %}

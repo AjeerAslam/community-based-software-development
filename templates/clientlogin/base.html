@@ -1,0 +1,66 @@
+
+{%load static%}
+{%if request.session.Email%}
+
+<doctype html>
+<head>
+<title>software devolepment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="{% static '/community/communitystyle1.css' %}">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+
+<body id="body" >
+
+
+<div id="dashboard">
+<img src="{%static '/community/images/List.svg' %}">	
+</div>	
+<div id="header">
+<a id=a11><b>Dashboard</b></a><br>
+<img class="img" src="{%static '/community/images/arrow.svg' %}">
+{% block header %}
+      
+{% endblock  %}
+<div id=a33>Welcome {{request.session.username}}</div><br>
+<a id=a44><div id=d1><span>N</span></div></a><br>
+<a id=a55 href="{% url 'community:logout' %}"><img class="img" src="{%static '/community/images/Logout.svg' %}"></a><br>
+</div>
+<div id="nav">
+<div id=n1 >
+<img src="{%static '/community/images/Vector.svg'%}" id='home'><a href="{% url 'community:index1' %}" id=a1><b>Home</b></a>
+</div>
+<div id=n2>
+<img src="{%static '/community/images/Maintenance.svg'%}" id='mywork'><a href="{% url 'community:cm_mywork' %}" id=a2><b>My Works</b></a>
+</div>
+<div id=n3>
+<img src="{%static '/community/images/View1.svg'%}" id='review'><a href="{% url 'community:cm_review' %}" id=a3><b>Review</b></a>
+</div>
+<div id=n4>
+<img src="{%static '/community/images/Audit.svg'%}" id='completed'><a href="{% url 'community:cm_completed' %}"id=a4><b>Completed</b></a>
+</div>
+{% block color %}
+      
+{% endblock  %}
+</div>
+<div id="section">
+
+{% block section %}
+
+
+{% endblock  %}
+
+</div>
+</body>
+<script src="{% static '/community/community.js' %}">
+
+</script>
+</html>
+{%endif%}

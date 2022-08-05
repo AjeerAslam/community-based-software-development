@@ -108,6 +108,11 @@ class Developers(models.Model):
     dev_phone = models.IntegerField(blank=True, null=True)
     dev_address = models.TextField(blank=True, null=True)
     dev_password = models.IntegerField(blank=True, null=True)
+    
+    def register(self):
+        self.save()
+    def isExists(self):
+        return Developers.objects.filter(dev_email=self.dev_email) 
 
     class Meta:
         managed = False
@@ -174,13 +179,26 @@ class Experts(models.Model):
 
 class Files(models.Model):
     fl_id = models.AutoField(primary_key=True)
-    fl_name = models.CharField(max_length=1000, blank=True, null=True)
-    fl_description = models.TextField(blank=True, null=True)
-    fl_file = models.TextField(blank=True, null=True)
+    fl_name = models.CharField(max_length=1000)
+    fl_description = models.TextField()
+    fl_file = models.FileField(upload_to='project/modules')
     fl_md_id = models.IntegerField(blank=True, null=True)
+    fl_input_file = models.FileField(upload_to='project/modules',blank=True, null=True)
+    fl_output_file = models.FileField(upload_to='project/modules',blank=True, null=True)
+    def __str__(self):
+        return self.fl_name 
+    def delete(self,*args, **kwargs):  
+        self.fl_file.delete()
+        self.fl_input_file.delete()
+        self.fl_output_file.delete()
+        super().delete(*args, **kwargs)
+        
+
+
+       
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'files'
 
 

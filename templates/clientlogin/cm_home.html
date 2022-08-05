@@ -1,0 +1,72 @@
+{% extends "clientlogin/base.html" %}
+{% load static %} 
+{% block header %}
+<a id=a22><b>Home</b></a><br>
+{% endblock header %}
+{% block color %} 
+<script>
+  
+    $(document).ready(function(){
+        document.getElementById("home").style.filter="invert(100%)";
+        document.getElementById("a1").style.color= "white";
+        console.log('hello');
+    
+    
+    });
+    
+        
+    </script>    
+{% endblock  %}
+
+
+
+{% block section %}
+<div id="t1">
+    <h2 align="center">MY WORKS</h2>
+
+<table  class="md">
+
+{%for getdata in Modules  %}
+
+{% if forloop.counter0|divisibleby:2 %} 
+<tr>
+
+
+<td>
+<div id="b" onclick="alert('div');">
+<form id="myform1" name="myform1">
+<a href="" onclick="accept({{getdata.md_id}})" id="accept" name="acceptk[]" value="" class="accept1" ><img src="{%static '/community/images/accept.svg'%}"></a>
+<a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
+</form>
+
+<sec  id="f">{{getdata.md_name}}</sec>
+<p id="d">{{getdata.md_description}}</p>
+</div>
+</td>
+
+{% else %}
+
+<td>
+<div id="b"  onclick="alert('div');">
+<form id="myform1" name="myform1">
+<a href="" onclick="accept({{getdata.md_id}})" id="accept" name="acceptk[]" value="" class="accept1" ><img src="{%static '/community/images/accept.svg'%}"></a>
+<a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
+</form>
+
+
+<sec  id="f">{{getdata.md_name}}</sec>
+<p id="d">{{getdata.md_description}}</p>
+</div>
+</td>
+
+</tr>
+{%endif%}
+
+{% empty %}
+    <h1>No works</h1>
+
+{%endfor%}
+
+</table>
+</div>
+{% endblock section %}

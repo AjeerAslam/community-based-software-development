@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <script> 
+  function validateForm() {
+    let x = document.forms["myform"]["p"].value;
+    let y = document.forms["myform"]["p1"].value;
+
+    if (x!=y) {
+      alert("password must be same");
+      return false;
+    }
+  }
+  </script>
+  <title>community signup</title>
+  <style>
+    #h{
+      text-align: center;
+    }
+  
+    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script language="javascript">
+    function popup()
+    {
+     window.alert("REGISTRATION IS SUCCESSFULLY!");
+     /*<?PHP
+      header('Location: showworks.php');
+     ?>*/
+    }
+  </script>
+</head>
+<body>
+    <div class="container">
+      <h2 id="h">PROFILE</h2>
+      <form action="{% url 'c_signup' %}" method='post' onsubmit="" id="myform" onsubmit="">
+        {% csrf_token %}
+        
+          {%if error %}
+          <div class="alert alert-danger"><br>
+        
+          <b class="text-danger">{{error}}</b>
+          
+        </div>
+          {%endif %}
+       
+        <div class="form-group">
+          <label for="text">NAME:</label>
+          <input type="username" value="{{values.username}}" class="form-control" name="Name" required min="5">
+        </div>
+        <div class="form-group">
+          <label for="pwd">EMAIL:</label>
+          <input type="email" class="form-control" value="{{values.email}}" id="email" name="Email" required>
+        </div>
+        <div class="form-group">
+          <label for="pwd">PHONE-NO:</label>
+          <input type="number" class="form-control"  name="phn" min="10" value="{{values.phone}}">
+        </div>
+        <div class="form-group">
+          <label for="pwd">PASSWORD:</label>
+          <input type="password" class="form-control"   name="p" min="8" required value="{{values.password}}">
+        </div>
+         <div class="form-group">
+          <label for="DOB">CONFIRM PASSWORD:</label>
+          <input type="password" class="form-control"  name="p1" min="8">
+        </div>
+        
+       
+       <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="Register" value="Register" class="btn btn-default">
+         
+      </form>
+    </div>
+    
+    </body>
+</html>

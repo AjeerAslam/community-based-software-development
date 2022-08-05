@@ -1,0 +1,74 @@
+{% extends "clientlogin/base.html" %}
+{% load static %} 
+{% block header %}
+<a id=a22><b>MyWork</b></a><br>
+<img class="arrow2" src="{%static '/community/images/arrow.svg' %}">
+<a id="a66"><b>viewfile</b></a>
+<br>
+{% endblock header %}
+{% block color %}
+<script>
+  
+    $(document).ready(function(){
+        document.getElementById("mywork").style.filter="invert(100%)";
+        document.getElementById("a2").style.color= "white";
+        
+        $(a22).attr("href", "{% url 'community:cm_mywork' %}");
+
+        console.log('hello');
+    
+    
+    });
+    
+        
+    </script> 
+
+{% endblock  %}
+
+
+{% block section %}
+<h2>VIEW YOUR UPLOADS
+</h2>
+    <p>
+      <a href="{% url 'community:cm_upload' %}" class="btn btn-success btn-lg btn-block">Add Files</a>
+    </p>
+
+<div class="viewm">
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Descrption</th>
+            <th>file</th>
+            <th>Delete</th>
+
+    
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for file in files %}
+        <tr>
+
+            <td>{{file.fl_name}}</td>
+            <td>{{file.fl_description}}</td>
+            <td>
+                <a href="{{ file.fl_file.url }}" class="btn btn-primary btn-sm" target="_blank">
+                    Download
+
+                  </a>
+               </td>
+               <td>
+                {{file.file_id}}
+                <form method="post" action="{% url 'community:cm_delete' file.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>  
+               </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+
+{% endblock section %}

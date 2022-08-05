@@ -1,3 +1,4 @@
+{% load static %}
 function accept(pr_id) {
 
     alert(pr_id);
@@ -40,10 +41,10 @@ event.preventDefault();
 } 
 function module_page(event,pr_id) {
 
-    alert(pr_id);
+    alert(100);
   
    $.ajax({
-    url: '/ex_new_modules/',
+    url: '{% url expert:ex_new_modules  %}',
     type: 'GET',
     data:{
         'id':pr_id

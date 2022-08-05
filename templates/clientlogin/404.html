@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h6 align="center">404 NOT FOUND</h6> 
+</body>
+</html>
+def cm_upload1(request):
+    print(request)
+    if request.method=='GET':
+            id= request.GET.get('id')
+            request.session['md_id']=id
+            form=UploadForm(); 
+            print (form)
+            return render(request,'clientlogin/upload.html',{'form':form})
+    else:
+        redirect('cm_mywork')
