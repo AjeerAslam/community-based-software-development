@@ -25,7 +25,7 @@ from django.contrib.auth import logout
 
 
 def load(request):
-    
+    print(5)
     return render(request,'expertlogin.html')
 
         
@@ -119,7 +119,7 @@ def project_close(request):
             #Projects.objects.raw('UPDATE projects SET pr_file=%s AND pr_closing=%s WHERE pr_id=%s AND pr_ex_id=%s',[file,close,pr_id,ex_id])
             #model_instance = student.save(commit=False)
             #model_instance.save()
-            return redirect('/ex_myworks/')
+            return redirect('/expert/ex_myworks/')
 
 #modules
 def ex_new_modules(request):
@@ -180,7 +180,7 @@ def module_creation(request):
             #Modules.objects.raw('UPDATE modules SET md_output="new" WHERE md_id=id',[md.md_id])
             #model_instance = student.save(commit=False)
             #model_instance.save()
-            return redirect('/ex_new_modules/')  
+            return redirect('/expert/ex_new_modules/')  
     else:  
         module = module_creation_form()  
         return render(request,"module_creation.html",{'form':module})
@@ -216,7 +216,7 @@ def module_suggestion(request):
             #Projects.objects.raw('UPDATE projects SET pr_file=%s AND pr_closing=%s WHERE pr_id=%s AND pr_ex_id=%s',[file,close,pr_id,ex_id])
             #model_instance = student.save(commit=False)
             #model_instance.save()
-            return redirect('/ex_manage_modules/')
+            return redirect('/expert/ex_manage_modules/')
 
 
 

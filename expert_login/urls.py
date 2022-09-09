@@ -18,6 +18,7 @@ urlpatterns = [
     
     #projects
     path('ex_home/', views.ex_home,name='ex_home'),
+        #path('accept/', views.ex_myworks,name='accept'),
         path('accept/', views.accept,name='accept'),
     path('ex_myworks/', views.ex_myworks,name='ex_myworks'),
         path('project_close/', views.project_close,name='project_close'),
