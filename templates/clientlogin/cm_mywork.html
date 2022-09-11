@@ -30,7 +30,7 @@
     <td>
 
     <div id="b">
-        <form id='form-id' method="post" action="{% url 'community:cm_view' getdata.md_id %}">
+        <form id='form-id' method="post" action="{% url 'community:cm_view' getdata.md_id  %}">
                     {% csrf_token %}
                        <a href="#" onclick="document.forms['form-id'].submit();" id="u" > <img src="{%static '/community/images/Group 12.svg'%}"> </a>
                 </form>  
@@ -42,7 +42,7 @@
     <a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
     
     <sec  id="f">{{getdata.md_name}}</sec>
-    <p id="d">{{getdata.md_description}}</p>
+    <a id="d" href="{% url 'expert:md_description' getdata.md_id %}" >Desription</a><br>
     </div>
     </td>
     
@@ -51,7 +51,7 @@
     <td>
     <div id="b">
        
-        <form id='form-id1' method="post" action="{% url 'cm_view' getdata.md_id %}">
+        <form id='form-id1' method="post" action="{% url 'community:cm_view' getdata.md_id %}">
             {% csrf_token %}
                <a href="#" onclick="document.forms['form-id1'].submit();" id="u" > <img src="{%static '/community/images/Group 12.svg'%}"> </a>
         </form>  
@@ -62,7 +62,7 @@
         <a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
 
     <sec  id="f">{{getdata.md_name}}</sec>
-    <p id="d">{{getdata.md_description}}</p>
+    <a id="d" href="{% url 'expert:md_description' getdata.md_id %}" >Desription</a><br>
     </div>
     </td>
     

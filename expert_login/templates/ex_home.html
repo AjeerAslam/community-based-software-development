@@ -4,6 +4,8 @@
     <title>expert</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static '/expert/expert.css' %}">
+    {% block boot %}
+    {% endblock  %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script></script>
     {% block color %}
@@ -36,7 +38,7 @@
     {% block header  %}
     {% endblock  %}
     
-    <div id="a33">welcome {{ request.session.name }}</div><br>
+    <div id="a33">welcome {{ request.session.ex_name }}</div><br>
 
     <!--<a id=a44><div id=d1><span>N</span></div></a><br>-->
     <a id=a55 href="{% url 'expert:ex_login' %}" ><img src="{% static '/images/Logout.svg'%}"></a><br>
@@ -77,8 +79,8 @@
     <a href="" onclick="accept({{getdata.pr_id}})" id="u"><div id="accept"><div id="accept1">ACCEPT</div></div></a>
     <!--<a href="" onclick="func2(event)" id="p1"><div id="c"><div id="c1">C</div></div></a>-->
     <sec  id="f">{{getdata.pr_name}}</sec>
-    <input type="hidden" id="description" name="description" value="{{getdata.pr_description}}">
-    <a id="d" onclick="des()" >Desription</a><br>
+    <!--<input type="hidden" id="description" name="description" value="{{getdata.pr_description}}">-->
+    <a id="d" href="{% url 'expert:description' getdata.pr_id %}" >Desription</a><br>
     <p id="ddd">{{getdata.pr_due}}</p>
     </div>
     </td>
@@ -93,8 +95,8 @@
         <a href="" onclick="accept({{getdata.pr_id}})" id="u"><div id="accept"><div id="accept1">ACCEPT</div></div></a>
         <!--<a href="" onclick="func2(event)" id="p1"><div id="c"><div id="c1">C</div></div></a>-->
         <sec  id="f">{{getdata.pr_name}}</sec>
-        <input type="hidden" id="description" name="description" value="{{getdata.pr_description}}">
-    <a id="d" onclick="des()" >Desription</a><br>
+        <!--<input type="hidden" id="description" name="description" value="{{getdata.pr_description}}">-->
+        <a id="d" href="{% url 'expert:description' getdata.pr_id %}" >Desription</a><br>
         <p id="ddd">{{getdata.pr_due}}</p>
         </div>
         </td>

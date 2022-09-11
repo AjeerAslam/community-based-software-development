@@ -19,7 +19,8 @@ urlpatterns = [
     path('cm_completed/', views.cm_completed,name='cm_completed'),
     path('cm_upload/', views.cm_upload,name='cm_upload'),
 
-    path('cm_view/<int:pk>', views.cm_view,name='cm_view'),
+    path('cm_view/<int:pk>/', views.cm_view,name='cm_view'),
+    path('ex_view/<int:pk>/', views.ex_view,name='ex_view'),
     path('cm_delete/<int:pk>/', views.cm_delete,name='cm_delete'),
    
 

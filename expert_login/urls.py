@@ -20,6 +20,8 @@ urlpatterns = [
     path('ex_home/', views.ex_home,name='ex_home'),
         #path('accept/', views.ex_myworks,name='accept'),
         path('accept/', views.accept,name='accept'),
+        path('description/<str:pk>/', views.description,name='description'),
+        
     path('ex_myworks/', views.ex_myworks,name='ex_myworks'),
         path('project_close/', views.project_close,name='project_close'),
     path('ex_review/', views.ex_review,name='ex_review'),
@@ -28,6 +30,7 @@ urlpatterns = [
     #modules
     path('ex_new_modules/',views.ex_new_modules,name='ex_new_modules'),
         path('module_creation/', views.module_creation,name="module_creation"),
+        path('md_description/<str:pk>/', views.md_description,name='md_description'),
     path('ex_manage_modules/',views.ex_manage_modules,name='ex_manage_modules'),
         path('approve_module/', views.approve_module,name='approve_module'),
         path('module_suggestion/', views.module_suggestion,name='module_suggestion'),

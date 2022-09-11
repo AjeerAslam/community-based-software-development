@@ -33,8 +33,7 @@
     <a href="" onclick="func6(event)" id="prog"><div id="progress"><div id="progress1">PROGRESS</div></div></a>
     
     <a onclick="module_page(event,{{getdata.pr_id}});"><sec  id="f">{{getdata.pr_name}}</sec></a>
-    <input type="hidden" id="description" name="description" value="{{getdata.pr_description}}">
-    <a id="d" onclick="des()" >Desription</a><br>
+    <a id="d" href="{% url 'expert:description' getdata.pr_id %}" >Desription</a><br>
     <p id="ddd">{{getdata.pr_due}}</p>
     </div>
     </td>
@@ -46,8 +45,7 @@
         <a href="" onclick="func6(event)" id="prog"><div id="progress"><div id="progress1">PROGRESS</div></div></a>
         
         <a onclick="module_page(event,{{getdata.pr_id}});"><sec  id="f">{{getdata.pr_name}}</sec></a>
-        <input type="hidden" id="description" name="description" value="{{getdata.pr_description}}">
-    <a id="d" onclick="des()" >Desription</a><br>
+        <a id="d" href="{% url 'expert:description' getdata.pr_id %}" >Desription</a><br>
         <p id="ddd">{{getdata.pr_due}}</p>
         </div>
         </td>

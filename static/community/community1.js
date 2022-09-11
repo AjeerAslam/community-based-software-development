@@ -20,11 +20,12 @@ function func3(event) {
  
 }
 function accept(md_id) {
+alert(100)
 
 alert(md_id);
 
 $.ajax({
-url: '/accept/',
+url: '/community/accept/',
 type: 'GET',// This is the default though, you don't actually need to always mention it
 data:{
 'id':md_id
@@ -56,7 +57,7 @@ function update1(md_id) {
     alert(md_id);
     
     $.ajax({
-    url: '/cm_close/',
+    url: '/community/cm_close/',
     type: 'GET',// This is the default though, you don't actually need to always mention it
     data:{
     'id':md_id

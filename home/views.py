@@ -43,17 +43,17 @@ def login(request):
     if 'cl_login' in request.POST :
         username = request.POST['username']
         password = request.POST['password']
-        request.session['username']=username
+        request.session['cl_username']=username
         login_verification=Clients.objects.raw('SELECT * FROM clients WHERE cl_id=%s AND cl_password=%s' ,[username,password]) 
-        request.session['name']=login_verification[0].cl_name
+        request.session['cl_name']=login_verification[0].cl_name
     if login_verification:
-        projects_progress=Projects.objects.raw('SELECT * FROM projects WHERE (pr_status="waiting" OR pr_status="new") AND (pr_cl_id=%s)',[request.session['username']])
+        projects_progress=Projects.objects.raw('SELECT * FROM projects WHERE (pr_status="waiting" OR pr_status="new") AND (pr_cl_id=%s)',[request.session['cl_username']])
         return render(request,'client_progress.html',{'Projects':projects_progress})
     else:
         return render(request,'index.html',{'error':"username/password error"})
 
 def client_progress(request):
-    projects_progress=Projects.objects.raw('SELECT * FROM projects WHERE (pr_status="waiting" OR pr_status="new") AND (pr_cl_id=%s)',[request.session['username']])
+    projects_progress=Projects.objects.raw('SELECT * FROM projects WHERE (pr_status="waiting" OR pr_status="new") AND (pr_cl_id=%s)',[request.session['cl_username']])
     return render(request,'client_progress.html',{'Projects':projects_progress})
 
 def cl_requirement(request):
@@ -63,23 +63,24 @@ def cl_requirement(request):
         if project.is_valid():
             
             pr=project.save()
-            #Projects.objects.raw('UPDATE projects SET pr_status="new" AND pr_cl_id=%s WHERE pr_id=%s',[request.session['username'],pr.pr_id])
-            Projects.objects.filter(pr_id=pr.pr_id).update(pr_status='new',pr_cl_id=request.session['username'])
+            #Projects.objects.raw('UPDATE projects SET pr_status="new" AND pr_cl_id=%s WHERE pr_id=%s',[request.session['cl_username'],pr.pr_id])
+            Projects.objects.filter(pr_id=pr.pr_id).update(pr_status='new',pr_cl_id=request.session['cl_username'])
 
             
-            return HttpResponse("data submitted successfully") 
+            projects_progress=Projects.objects.raw('SELECT * FROM projects WHERE (pr_status="waiting" OR pr_status="new") AND (pr_cl_id=%s)',[request.session['cl_username']])
+            return render(request,'client_progress.html',{'Projects':projects_progress,'ok':'project submitted successfully..'})
 
     project = Requirements()     
     return render(request,'cl_requirement.html',{'form':project})
 
 
 def cl_review(request):    
-        projects_review=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="review" AND pr_cl_id=%s',[request.session['username']])
+        projects_review=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="review" AND pr_cl_id=%s',[request.session['cl_username']])
         return render(request,'cl_review.html',{'Projects_review':projects_review})
 
 
 def cl_completed(request):        
-        projects_completed=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="completed" AND pr_cl_id=%s',[request.session['username']])
+        projects_completed=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="completed" AND pr_cl_id=%s',[request.session['cl_username']])
         return render(request,'cl_completed.html',{'Projects_completed':projects_completed})
     
 
@@ -90,7 +91,7 @@ def accept(request):
         id= request.GET.get('id')
         #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
         Projects.objects.filter(pr_id=id).update(pr_status='completed')
-        projects_review=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="review" AND pr_cl_id=%s',[request.session['username']])
+        projects_review=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="review" AND pr_cl_id=%s',[request.session['cl_username']])
         return render(request,'cl_review.html',{'Projects_review':projects_review})
 def log_out(request):
     logout(request) 

@@ -36,7 +36,7 @@
     <a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
     
     <sec  id="f">{{getdata.md_name}}</sec>
-    <p id="d">{{getdata.md_description}}</p>
+    <a id="d" href="{% url 'expert:md_description' getdata.md_id %}" >Desription</a><br>
     </div>
     </td>
     
@@ -46,7 +46,7 @@
     <a href="" onclick="func1(event)" id="pending" class="accept1"><img src="{%static '/community/images/pending.svg'%}"></a>
     <a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
     <sec  id="f">{{getdata.md_name}}</sec>
-    <p id="d">{{getdata.md_description}}</p>
+    <a id="d" href="{% url 'expert:md_description' getdata.md_id %}" >Desription</a><br>
     </div>
     </td>
         

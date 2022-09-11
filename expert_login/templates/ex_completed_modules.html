@@ -12,23 +12,21 @@
     </tr>
         <td>
         <div id="b" onclick="alert('div');">
-        <a href="" onclick="func1(event)" id="reopen"><div id="accept"><div id="accept1">FILES</div></div></a>
+        <a href="{% url 'community:ex_view' getdata.md_id %}" id="reopen"><div id="accept"><div id="accept1">FILES</div></div></a>
         <!--<a href="" onclick="func9(event)" id="downm"><img src="{% static '/images/Download.svg'%}" id="download1"></a>-->
         <!--<a href="" onclick="func2(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>-->
         <sec  id="f">{{getdata.md_name}}</sec>
-        <input type="hidden" id="description" name="description" value="{{getdata.md_description}}">
-            <a id="d" onclick="des()" >Desription</a><br>>
+        <a id="d" href="{% url 'expert:md_description' getdata.md_id %}" >Desription</a><br>
         </div>
         </td>
         {% else %}
         <td>
             <div id="b" onclick="alert('div');">
-            <a href="" onclick="func1(event)" id="reopen"><div id="accept"><div id="accept1">FILES</div></div></a>
+            <a href="{% url 'community:ex_view' getdata.md_id %}" id="reopen"><div id="accept"><div id="accept1">FILES</div></div></a>
             <!--<a href="" onclick="func9(event)" id="downm"><img src="{% static '/images/Download.svg'%}" id="download1"></a>-->
             <!--<a href="" onclick="func2(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>-->
             <sec  id="f">{{getdata.md_name}}</sec>
-            <input type="hidden" id="description" name="description" value="{{getdata.md_description}}">
-            <a id="d" onclick="des()" >Desription</a><br>>
+            <a id="d" href="{% url 'expert:md_description' getdata.md_id %}" >Desription</a><br>
             </div>
             </td>
     </tr>

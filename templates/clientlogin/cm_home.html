@@ -40,7 +40,7 @@
 </form>
 
 <sec  id="f">{{getdata.md_name}}</sec>
-<p id="d">{{getdata.md_description}}</p>
+<a id="d" href="{% url 'expert:md_description' getdata.md_id %}" >Desription</a><br>
 </div>
 </td>
 
@@ -55,7 +55,7 @@
 
 
 <sec  id="f">{{getdata.md_name}}</sec>
-<p id="d">{{getdata.md_description}}</p>
+<a id="d" href="{% url 'expert:md_description' getdata.md_id %}" >Desription</a><br>
 </div>
 </td>
 

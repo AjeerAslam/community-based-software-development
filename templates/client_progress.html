@@ -32,7 +32,7 @@
 <a id="a22"><b>Home</b></a><br>
 {% endblock%}
 
-<div id="a33">Welcome <span>{{request.session.name}}</span></div><br>
+<div id="a33">Welcome <span>{{request.session.cl_name}}</span></div><br>
 <!--<a id="a44"><div id="d1"><span>N</span></div></a><br>-->
 <a id="a55" href="{% url 'log_out' %}"><img src="{% static '/images/Logout.svg'%}"></a><br>
 </div>
@@ -54,6 +54,7 @@
 </div>
 <div id="section">
 {% block section %}
+<span id="ok">{{ok}}</span>
 <div>
 <table  id="t1" style="position: relative;left: -10px;top: -40px;border-spacing:60px;">
 {%for getdata in Projects %}
@@ -66,7 +67,7 @@
 <!--<a href="" onclick="func5(event)" id="proj"><div id="c"><div id="c1"><img src="{% static '/images/Group 74.svg'%}"></div></div></a>-->
 
 <sec  id="f">{{getdata.pr_name}}</sec>
-<p id="d">{{getdata.pr_description}}</p>
+<a id="d" href="{% url 'expert:description' getdata.pr_id %}" >Desription</a><br>
 <p id="ddd">{{getdata.pr_due}}</p>  
 <div id="progress">
   
@@ -85,7 +86,7 @@
     <!--<a href="" onclick="func5(event)" id="proj"><div id="c"><div id="c1"><img src="{% static '/images/Group 74.svg'%}"></div></div></a>-->
     
     <sec  id="f">{{getdata.pr_name}}</sec>
-    <p id="d">{{getdata.pr_description}}</p>
+    <a id="d" href="{% url 'expert:description' getdata.pr_id %}" >Desription</a><br>
     <p id="ddd">{{getdata.pr_due}}</p>  
     <div id="progress">
       

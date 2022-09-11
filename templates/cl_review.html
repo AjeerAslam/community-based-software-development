@@ -31,7 +31,7 @@
 
 
 <sec  id="f">{{getdata.pr_name}}</sec>
-<p id="d">{{getdata.pr_description}}</p>
+<a id="d" href="{% url 'expert:description' getdata.pr_id %}" >Desription</a><br>
 <p id="ddd">{{getdata.pr_due}}</p>
 </div>
 </td>

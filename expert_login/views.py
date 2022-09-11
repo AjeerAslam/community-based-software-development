@@ -64,31 +64,35 @@ def ex_login_verification(request):
     if 'LOGIN' in request.POST:
         username= request.POST['username']
         password = request.POST['password']
-        request.session['username'] = username
+        request.session['ex_username'] = username
         login_verification=Experts.objects.raw('SELECT * FROM experts WHERE ex_id=%s AND ex_password=%s',[username,password])
         
         if login_verification:
-            request.session['name'] =login_verification[0].ex_name
+            request.session['ex_name'] =login_verification[0].ex_name
             projects_latest=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="new"')
             return render(request,'ex_home.html',{'Projects':projects_latest})
+        else:
+            return render(request,'expertlogin.html',{'error':"username/password error"})
+
+    return redirect('expert:ex_home')
     
-    return render(request,'expertlogin.html',{'error':"username/password error"})
+    
 def log_out(request):
     logout(request)
-    return redirect('ex_login')
+    return redirect('expert:ex_login')
 
 #project
 def ex_home(request):
     projects_latest=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="new"')
     return render(request,'ex_home.html',{'Projects':projects_latest})
 def ex_myworks(request):
-    projects_task=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="waiting" AND pr_ex_id=%s',[request.session['username']])
+    projects_task=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="waiting" AND pr_ex_id=%s',[request.session['ex_username']])
     return render(request,'ex_myworks.html',{'Projects_task':projects_task})
 def ex_review(request):
-    projects_review=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="review" AND pr_ex_id=%s',[request.session['username']])
+    projects_review=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="review" AND pr_ex_id=%s',[request.session['ex_username']])
     return render(request,'ex_review.html',{'Projects_review':projects_review})
 def ex_completed(request):
-    projects_completed=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="completed" AND pr_ex_id=%s',[request.session['username']])
+    projects_completed=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="completed" AND pr_ex_id=%s',[request.session['ex_username']])
     return render(request,'ex_completed.html',{'Projects_completed':projects_completed})
 
 #project buttons
@@ -97,9 +101,12 @@ def accept(request):
     if request.method == 'GET':
         id= request.GET.get('id')
         #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
-        Projects.objects.filter(pr_id=id).update(pr_status='waiting',pr_ex_id=request.session['username'])
+        Projects.objects.filter(pr_id=id).update(pr_status='waiting',pr_ex_id=request.session['ex_username'])
         projects_latest=Projects.objects.raw('SELECT * FROM projects WHERE pr_status="new"')
         return render(request,'ex_home.html',{'Projects':projects_latest,'ok':"success"})
+def description(request,pk):
+    obj=Projects.objects.filter(pr_id=pk).values()
+    return render(request,'description.html',{'desc':obj[0]['pr_description']})
 def project_close(request):
     if request.method == 'GET':
         request.session['pr_id']= request.GET.get('id')
@@ -113,7 +120,7 @@ def project_close(request):
             handle_uploaded_file(request.FILES['pr_file'])
             file= request.FILES["pr_file"]
             close = request.POST['pr_closing'] 
-            ex_id=request.session['username']
+            ex_id=request.session['ex_username']
             pr_id=request.session['pr_id']
             Projects.objects.filter(pr_id=pr_id,pr_ex_id=ex_id ).update(pr_file=file,pr_closing=close,pr_status='review')
             #Projects.objects.raw('UPDATE projects SET pr_file=%s AND pr_closing=%s WHERE pr_id=%s AND pr_ex_id=%s',[file,close,pr_id,ex_id])
@@ -162,9 +169,11 @@ def download_request(request):
         request.session['pr_id']= request.GET.get('id')
         #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
         #Projects.objects.filter(pr_id=id).update(pr_status='waiting')
-        projects_download=Projects.objects.raw('SELECT * FROM projects WHERE  pr_id=%s',[request.session['pr_id']])
-        request.session['file_name']= projects_download[0].pr_file
-        print(request.session['file_name'])
+        #projects_download=Projects.objects.raw('SELECT * FROM projects WHERE  pr_id=%s',[request.session['pr_id']])
+        projects_download=Projects.objects.filter(pr_id=request.session['pr_id']).values()
+        #print(projects_download)
+        request.session['file_name']= projects_download[0]['pr_file']
+        #print(request.session['file_name'])
         return render(request,'download.html')
 def module_creation(request):  
     if 'module_creation_button' in request.POST:  
@@ -184,6 +193,10 @@ def module_creation(request):
     else:  
         module = module_creation_form()  
         return render(request,"module_creation.html",{'form':module})
+def md_description(request,pk):
+    obj=Modules.objects.filter(md_id=pk).values()
+    return render(request,'description.html',{'desc':obj[0]['md_description']})
+
 def approve_module(request):
     if request.method == 'GET':
         id= request.GET.get('id')

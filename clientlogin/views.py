@@ -15,12 +15,9 @@ def index1(request):
     try :
         
         username=request.session['Email']
-        print(username)
         if username is not None:
             id1=Developers.objects.values_list('dev_id', flat=True).get(dev_email=username)
-            print(username)
-            module_latest=Modules.objects.raw('SELECT * FROM modules WHERE md_status="new" AND md_dev_id=%s',[id1])
-            print(username)
+            module_latest=Modules.objects.raw('SELECT * FROM modules WHERE md_status="new"')
             return render(request,'clientlogin/cm_home.html',{'Modules':module_latest})
             #return render(request,'clientlogin/communitylogin.html',{'Modules':module_latest})
         else:
@@ -207,10 +204,13 @@ def cm_close(request):
     else:
         return redirect('index1')
 def cm_view(request,pk):
-   
     files=Files.objects.all().filter(fl_md_id=pk)
     request.session['md_id']=pk
-    return render(request,'clientlogin/viewmodule.html',{'files':files})    
+    return render(request,'clientlogin/viewmodule.html',{'files':files}) 
+def ex_view(request,pk):
+    files=Files.objects.all().filter(fl_md_id=pk)
+    request.session['md_id']=pk
+    return render(request,'clientlogin/viewmodule2.html',{'files':files})     
 
 def cm_upload(request):
     print (request.session['md_id'])
@@ -222,7 +222,7 @@ def cm_upload(request):
                 form = form.save(commit=False)
                 form.fl_md_id = request.session['md_id']
                 form.save()
-                return redirect('cm_view',pk=request.session['md_id'])
+                return redirect('community:cm_view',pk=request.session['md_id'])
             #,{'form':form}  
             else:
                 return render(request,'clientlogin/upload.html',{'form':form})
