@@ -29,7 +29,7 @@
         <td>
         <div id="b" onclick="alert('div');">
         
-        <a href="" onclick="func6(event)" id="view" class="accept1"><img src="{%static '/community/images/view22.svg'%}"></a>
+        <a href="{% url 'community:cm_view' getdata.md_id %}"  id="view" class="accept1"><img src="{%static '/community/images/view22.svg'%}"></a>
         <a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
         
         <sec  id="f">{{getdata.md_name}}</sec>
@@ -39,7 +39,7 @@
         {% else %}
         <td>
         <div id="b"  onclick="alert('div');">
-        <a href="" onclick="func6(event)" id="view" class="accept1"><img src="{%static '/community/images/view22.svg'%}"></a>
+        <a href="{% url 'community:cm_view' getdata.md_id %}" id="view" class="accept1"><img src="{%static '/community/images/view22.svg'%}"></a>
         <a href="" onclick="func3(event)" id="p1"><img src="{%static '/community/images/Group 74.svg'%}"></a>
         <sec  id="f">{{getdata.md_name}}</sec>
         <a id="d" href="{% url 'expert:md_description' getdata.md_id %}" >Desription</a><br>

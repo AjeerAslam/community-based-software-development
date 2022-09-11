@@ -28,7 +28,7 @@
     <tr>
     <td>
     <div id="b" >
-    <a href="" onclick="project_download(event,{{getdata.pr_id}});" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
+    <a onclick="module_page(event,{{getdata.pr_id}});" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
     
     <a href="" onclick="project_download(event,{{getdata.pr_id}});" id="down"><div id="download"><img src="{% static '/images/Download.svg' %}"  id="download1"></div></a>
     <sec  id="f">{{getdata.pr_name}}</sec>
@@ -40,7 +40,7 @@
     {% else %}
     <td>
         <div id="b" onclick="alert('div');">
-        <a href="" onclick="des();" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
+        <a onclick="module_page(event,{{getdata.pr_id}});" id="vie"><div id="view"><div id="view1">VIEW</div></div></a>
         <!--<a href="" onclick="func8(event)" id="clie"><div id="c"><div id="c1">C</div></div></a>-->
         <a href="" onclick="project_download(event,{{getdata.pr_id}});" id="down"><div id="download"><img src="{% static '/images/Download.svg' %}"  id="download1"></div></a>
         <sec  id="f">{{getdata.pr_name}}</sec>

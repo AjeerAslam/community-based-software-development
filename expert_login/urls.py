@@ -39,6 +39,7 @@ urlpatterns = [
 
     path('download_file/', views.download_file,name='download_file'),
     path('download_request/', views.download_request,name='download_request'),
+    path('download_request_client/', views.download_request_client,name='download_request_client'),
     
 
      

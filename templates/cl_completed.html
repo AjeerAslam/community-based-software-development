@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div id="b" onclick="alert('div');">
-<a id="re"><button id="Reopen">Download</button></a>
+<a onclick="project_download(event,{{getdata.pr_id}});" id="re"><button id="Reopen">Download</button></a>
 
 <!--<a href="" onclick="func3(event)" id="dwn"><div id="c"><div id="c1"><img src="{% static '/images/Group 74.svg'%}"></div></div></a>-->
 
@@ -37,7 +37,7 @@
 {% else %}
 <td>
     <div id="b" onclick="alert('div');">
-    <a id="re"><button id="Reopen">Download</button></a>
+    <a onclick="project_download(event,{{getdata.pr_id}});" id="re"><button id="Reopen">Download</button></a>
     
     <!--<a href="" onclick="func3(event)" id="dwn"><div id="c"><div id="c1"><img src="{% static '/images/Group 74.svg'%}"></div></div></a>-->
     

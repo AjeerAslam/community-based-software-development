@@ -2,7 +2,6 @@
 
 function accept(pr_id) {
     
-    alert(pr_id);
   
    $.ajax({
     url: "/expert/accept/",
@@ -24,7 +23,6 @@ preventDefault();
 
 function project_close(event,pr_id) {
     
-    alert(100);
   
    $.ajax({
     url: '/expert/project_close/',
@@ -43,7 +41,6 @@ event.preventDefault();
 }
 function module_page(event,pr_id) {
     
-    alert(100);
   
    $.ajax({
     url: "/expert/ex_new_modules/",
@@ -62,7 +59,6 @@ event.preventDefault();
 }
 function project_download(event,pr_id) {
     
-    alert(pr_id);
   
    $.ajax({
     url: '/expert/download_request/',
@@ -81,7 +77,6 @@ event.preventDefault();
 }
 function approve_module(pr_id) {
     
-    alert(pr_id);
   
    $.ajax({
     url: '/expert/approve_module/',
@@ -102,7 +97,6 @@ preventDefault();
 }
 function module_suggestion(event,md_id) {
 
-    alert(md_id);
   
    $.ajax({
     url: '/expert/module_suggestion/',

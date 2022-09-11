@@ -24,7 +24,7 @@
 <tr>
 <td>
 <div id="b">
-<a id="re" onclick="download({{getdata.pr_id}})"><button id="download" name="download">Download</button></a>
+<a id="re" onclick="project_download(event,{{getdata.pr_id}})"><button id="download" name="download">Download</button></a>
 <a id="acc" onclick="accept({{getdata.pr_id}})"><button id="accept" name="accept">Accept</button></a>
 <!--<a href="" onclick="func3(event)" id="dwn"><div id="c"><div id="c1"><img src="{% static '/images/Group 74.svg'%}"></div></div></a>-->
 
@@ -35,6 +35,20 @@
 <p id="ddd">{{getdata.pr_due}}</p>
 </div>
 </td>
+{% else %}
+<td>
+    <div id="b">
+    <a id="re" onclick="project_download(event,{{getdata.pr_id}})"><button id="download" name="download">Download</button></a>
+    <a id="acc" onclick="accept({{getdata.pr_id}})"><button id="accept" name="accept">Accept</button></a>
+    <!--<a href="" onclick="func3(event)" id="dwn"><div id="c"><div id="c1"><img src="{% static '/images/Group 74.svg'%}"></div></div></a>-->
+    
+    
+    
+    <sec  id="f">{{getdata.pr_name}}</sec>
+    <a id="d" href="{% url 'expert:description' getdata.pr_id %}" >Desription</a><br>
+    <p id="ddd">{{getdata.pr_due}}</p>
+    </div>
+    </td>
 
 {% endif %}
 {% empty %}

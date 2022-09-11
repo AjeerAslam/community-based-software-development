@@ -175,6 +175,17 @@ def download_request(request):
         request.session['file_name']= projects_download[0]['pr_file']
         #print(request.session['file_name'])
         return render(request,'download.html')
+def download_request_client(request):
+    if request.method == 'GET':
+        request.session['pr_id']= request.GET.get('id')
+        #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
+        #Projects.objects.filter(pr_id=id).update(pr_status='waiting')
+        #projects_download=Projects.objects.raw('SELECT * FROM projects WHERE  pr_id=%s',[request.session['pr_id']])
+        projects_download=Projects.objects.filter(pr_id=request.session['pr_id']).values()
+        #print(projects_download)
+        request.session['file_name']= projects_download[0]['pr_file']
+        #print(request.session['file_name'])
+        return render(request,'download_client.html')
 def module_creation(request):  
     if 'module_creation_button' in request.POST:  
         module = module_creation_form(request.POST, request.FILES)
