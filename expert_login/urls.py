@@ -30,7 +30,7 @@ urlpatterns = [
     #modules
     path('ex_new_modules/',views.ex_new_modules,name='ex_new_modules'),
         path('module_creation/', views.module_creation,name="module_creation"),
-        path('md_import/', views.md_import,name="md_import"),
+        path('md_import/<str:pk>/', views.md_import,name="md_import"),
         path('md_description/<str:pk>/', views.md_description,name='md_description'),
     path('ex_manage_modules/',views.ex_manage_modules,name='ex_manage_modules'),
         path('approve_module/', views.approve_module,name='approve_module'),

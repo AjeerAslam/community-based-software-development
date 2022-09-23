@@ -18,7 +18,7 @@
         <div id="b" onclick="alert('div');">
         <a href="{% url 'community:ex_view' getdata.md_id %}" id="clos"><div id="close"><div id="close1">FILES</div></div></a>
     
-        <a href="{% url 'expert:md_import'  %}"  id="prog"><div id="progress"><div id="progress1">IMPORT</div></div></a>
+        <a href="{% url 'expert:md_import' getdata.md_id %}"  id="prog"><div id="progress"><div id="progress1">IMPORT</div></div></a>
         <!--<a href="{% url 'community:ex_view' getdata.md_id %}" id="reopen"><div id="accept"><div id="accept1">FILES</div></div></a>-->
         <!--<a href="" onclick="func9(event)" id="downm"><img src="{% static '/images/Download.svg'%}" id="download1"></a>-->
         <!--<a href="" onclick="func2(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>-->
@@ -31,7 +31,7 @@
             <div id="b" onclick="alert('div');">
             <a href="{% url 'community:ex_view' getdata.md_id %}" id="clos"><div id="close"><div id="close1">FILES</div></div></a>
     
-            <a href="{% url 'expert:md_import'  %}"  id="prog"><div id="progress"><div id="progress1">IMPORT</div></div></a>
+            <a href="{% url 'expert:md_import' getdata.md_id %}"  id="prog"><div id="progress"><div id="progress1">IMPORT</div></div></a>
             <!--<a href="" onclick="func9(event)" id="downm"><img src="{% static '/images/Download.svg'%}" id="download1"></a>-->
             <!--<a href="" onclick="func2(event)" id="developer"><div id="c"><div id="c1">D</div></div></a>-->
             <sec  id="f">{{getdata.md_name}}</sec>

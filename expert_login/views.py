@@ -215,9 +215,13 @@ def module_creation(request):
     else:  
         module = module_creation_form()  
         return render(request,"module_creation.html",{'form':module})
-def md_import(request):
-    print(request.session['pr_id'])
-    return redirect('/expert/ex_new_modules/')
+def md_import(request,pk):
+    module_existing=Modules.objects.filter(md_id=pk).values()
+    print(module_existing[0]['md_name'])
+    module_new=Modules(md_name=module_existing[0]['md_name'],md_input=module_existing[0]['md_input'],md_input_file=module_existing[0]['md_input_file'],md_description=module_existing[0]['md_description'],md_output=module_existing[0]['md_output'],md_output_file=module_existing[0]['md_output_file'],md_dev_id=module_existing[0]['md_dev_id'],md_status='review',md_due=module_existing[0]['md_due'],md_pr_id=request.session['pr_id'],md_sugg=module_existing[0]['md_sugg'])
+    module_new.save()
+    return redirect('/expert/ex_review_modules/')
+   
 
 def md_description(request,pk):
     obj=Modules.objects.filter(md_id=pk).values()
@@ -239,7 +243,6 @@ def approve_module(request):
        
 def module_suggestion(request):
     if request.method == 'GET':
-        print(100)
         request.session['md_id']= request.GET.get('id')
         print(request.session['md_id'])
         #Projects.objects.raw('UPDATE projects SET pr_status="waiting" WHERE pr_id=id')
