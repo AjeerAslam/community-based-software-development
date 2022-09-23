@@ -16,7 +16,7 @@ import mimetypes
 import os
 from django.http.response import HttpResponse
 from django.contrib.auth import logout
-
+from django.db.models import Q
 
 # Create your views here.
 
@@ -143,7 +143,18 @@ def ex_review_modules(request):
 def ex_completed_modules(request):
     completed_modules=Modules.objects.raw('SELECT * FROM modules WHERE md_status="completed" AND md_pr_id=%s',[request.session['pr_id']])
     return render(request,'ex_completed_modules.html',{'Modules_completed':completed_modules})
-
+def ex_import_modules(request):  
+    #modules=Modules.objects.raw('SELECT * FROM modules WHERE md_status="completed"')
+    if 'key_button' in request.GET:
+        modules= Modules.objects.filter( 
+            Q(md_status='completed')&
+            (Q(md_name__icontains=request.GET.get('key'))|
+            Q(md_description__icontains=request.GET.get('key')))
+        )
+    else:
+        modules= Modules.objects.filter(md_status='completed')
+    return render(request,'ex_import_modules.html',{'Modules_completed':modules})
+    
 #modules buttons
 def download_file(request):
     
@@ -204,6 +215,10 @@ def module_creation(request):
     else:  
         module = module_creation_form()  
         return render(request,"module_creation.html",{'form':module})
+def md_import(request):
+    print(request.session['pr_id'])
+    return redirect('/expert/ex_new_modules/')
+
 def md_description(request,pk):
     obj=Modules.objects.filter(md_id=pk).values()
     return render(request,'description.html',{'desc':obj[0]['md_description']})

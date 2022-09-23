@@ -30,12 +30,14 @@ urlpatterns = [
     #modules
     path('ex_new_modules/',views.ex_new_modules,name='ex_new_modules'),
         path('module_creation/', views.module_creation,name="module_creation"),
+        path('md_import/', views.md_import,name="md_import"),
         path('md_description/<str:pk>/', views.md_description,name='md_description'),
     path('ex_manage_modules/',views.ex_manage_modules,name='ex_manage_modules'),
         path('approve_module/', views.approve_module,name='approve_module'),
         path('module_suggestion/', views.module_suggestion,name='module_suggestion'),
     path('ex_review_modules/',views.ex_review_modules,name='ex_review_modules'),
     path('ex_completed_modules/',views.ex_completed_modules,name='ex_completed_modules'),
+    path('ex_import_modules/',views.ex_import_modules,name='ex_import_modules'),
 
     path('download_file/', views.download_file,name='download_file'),
     path('download_request/', views.download_request,name='download_request'),
