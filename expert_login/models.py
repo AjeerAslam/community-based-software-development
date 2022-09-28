@@ -215,6 +215,7 @@ class Modules(models.Model):
     md_due = models.DateField(blank=True, null=True)
     md_pr_id = models.IntegerField(blank=True, null=True)
     md_sugg = models.TextField(blank=True, null=True)
+    md_level = models.CharField(max_length=50, default='beginner')
     class Meta:
         managed = TRUE
         db_table = 'modules'

@@ -1,22 +1,4 @@
 {% extends "ex_home.html" %}
-{% block nav  %}
-<a id="a22"><b>Myworks</b></a><br>
-{% endblock  %}
-{% block color %}
-    <script>
-  
-        $(document).ready(function(){
-            document.getElementById("mywork").style.filter="invert(100%)";
-            document.getElementById("review").style.filter="invert(100%)";
-            document.getElementById("a2").style.color= "white";
-        
-        
-        });
-        
-            
-    </script>
-    
-{% endblock  %}
 {% block section %}
 <a href="{% url 'expert:download_file' %}"><h2>DOWNLOAD</h2></a>
 {% endblock section %}

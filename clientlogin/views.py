@@ -236,7 +236,7 @@ def cm_delete(request,pk):
     if request.method=='POST':       
         files=Files.objects.get(pk=pk)
         files.delete()
-    return redirect('cm_view',pk=request.session['md_id'])
+    return redirect('community:ex_view',pk=request.session['md_id'])
 #def cm_view(request):
  #   if request.method=='GET':
   #          id= request.GET.get('id')
